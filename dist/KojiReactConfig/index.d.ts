@@ -1,6 +1,11 @@
 import * as React from "react";
+import { ValuePath } from "@anderjason/util";
+export interface KojiReactConfigRenderParams {
+    vccData: any;
+    update: (path: string[], value: any) => void;
+}
 export interface KojiReactConfigProps {
-    render: (vccData: any) => any;
+    render: (renderParams: KojiReactConfigRenderParams) => any;
 }
 export interface KojiReactConfigState {
     vccData: any;
@@ -12,5 +17,6 @@ export declare class KojiReactConfig extends React.Component<KojiReactConfigProp
     };
     componentDidMount(): void;
     componentWillUnmount(): void;
+    update: (path: ValuePath | string[], value: any) => void;
     render(): any;
 }

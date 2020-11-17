@@ -1,9 +1,15 @@
 import * as React from "react";
 import { Receipt } from "@anderjason/observable";
 import { Koji } from "@anderjason/koji-frontend-tools";
+import { ValuePath } from "@anderjason/util";
+
+export interface KojiReactConfigRenderParams {
+  vccData: any;
+  update: (path: string[], value: any) => void;
+}
 
 export interface KojiReactConfigProps {
-  render: (vccData: any) => any;
+  render: (renderParams: KojiReactConfigRenderParams) => any;
 }
 
 export interface KojiReactConfigState {
@@ -38,10 +44,22 @@ export class KojiReactConfig extends React.Component<
     }
   }
 
-  render() {
-    const { vccData } = this.state;
+  update = (path: ValuePath | string[], value: any): void => {
+    let valuePath: ValuePath;
+    if (Array.isArray(path)) {
+      valuePath = ValuePath.givenParts(path);
+    } else {
+      valuePath = path;
+    }
 
-    const output = this.props.render(vccData);
+    Koji.instance.vccData.update(valuePath, value);
+  };
+
+  render() {
+    const output = this.props.render({
+      vccData: this.state.vccData,
+      update: this.update,
+    });
 
     return output;
   }

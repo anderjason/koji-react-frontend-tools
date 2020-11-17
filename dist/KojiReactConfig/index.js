@@ -3,11 +3,22 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.KojiReactConfig = void 0;
 const React = require("react");
 const koji_frontend_tools_1 = require("@anderjason/koji-frontend-tools");
+const util_1 = require("@anderjason/util");
 class KojiReactConfig extends React.Component {
     constructor() {
         super(...arguments);
         this.state = {
             vccData: undefined,
+        };
+        this.update = (path, value) => {
+            let valuePath;
+            if (Array.isArray(path)) {
+                valuePath = util_1.ValuePath.givenParts(path);
+            }
+            else {
+                valuePath = path;
+            }
+            koji_frontend_tools_1.Koji.instance.vccData.update(valuePath, value);
         };
     }
     componentDidMount() {
@@ -24,8 +35,10 @@ class KojiReactConfig extends React.Component {
         }
     }
     render() {
-        const { vccData } = this.state;
-        const output = this.props.render(vccData);
+        const output = this.props.render({
+            vccData: this.state.vccData,
+            update: this.update,
+        });
         return output;
     }
 }
