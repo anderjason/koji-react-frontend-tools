@@ -1,12 +1,12 @@
 import * as React from "react";
 import { ValuePath } from "@anderjason/util";
-export interface KojiReactConfigRenderParams {
+export interface KojiState {
     isRemixing: boolean;
     vccData: any;
-    update: (path: string[], value: any) => void;
+    update: (path: ValuePath | string[], value: any) => void;
 }
 export interface KojiReactConfigProps {
-    render: (renderParams: KojiReactConfigRenderParams) => any;
+    render: (kojiState: KojiState) => any;
 }
 export interface KojiReactConfigState {
     vccData: any;
