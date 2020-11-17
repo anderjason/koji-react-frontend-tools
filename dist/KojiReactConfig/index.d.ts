@@ -3,7 +3,7 @@ import { ValuePath } from "@anderjason/util";
 export interface KojiState {
     isRemixing: boolean;
     vccData: any;
-    update: (path: ValuePath | string[], value: any) => void;
+    update: (path: string | string[] | ValuePath, value: any) => void;
 }
 export interface KojiReactConfigProps {
     render: (kojiState: KojiState) => any;
@@ -18,6 +18,6 @@ export declare class KojiReactConfig extends React.Component<KojiReactConfigProp
     };
     componentDidMount(): void;
     componentWillUnmount(): void;
-    update: (path: ValuePath | string[], value: any) => void;
+    update: (path: string | string[] | ValuePath, value: any) => void;
     render(): any;
 }

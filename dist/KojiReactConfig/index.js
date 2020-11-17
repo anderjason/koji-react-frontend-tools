@@ -12,7 +12,10 @@ class KojiReactConfig extends React.Component {
         };
         this.update = (path, value) => {
             let valuePath;
-            if (Array.isArray(path)) {
+            if (typeof path === "string") {
+                valuePath = util_1.ValuePath.givenString(path);
+            }
+            else if (Array.isArray(path)) {
                 valuePath = util_1.ValuePath.givenParts(path);
             }
             else {

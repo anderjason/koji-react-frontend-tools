@@ -6,7 +6,7 @@ import { ValuePath } from "@anderjason/util";
 export interface KojiState {
   isRemixing: boolean;
   vccData: any;
-  update: (path: ValuePath | string[], value: any) => void;
+  update: (path: string | string[] | ValuePath, value: any) => void;
 }
 
 export interface KojiReactConfigProps {
@@ -45,9 +45,11 @@ export class KojiReactConfig extends React.Component<
     }
   }
 
-  update = (path: ValuePath | string[], value: any): void => {
+  update = (path: string | string[] | ValuePath, value: any): void => {
     let valuePath: ValuePath;
-    if (Array.isArray(path)) {
+    if (typeof path === "string") {
+      valuePath = ValuePath.givenString(path);
+    } else if (Array.isArray(path)) {
       valuePath = ValuePath.givenParts(path);
     } else {
       valuePath = path;
