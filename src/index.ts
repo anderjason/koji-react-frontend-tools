@@ -3,6 +3,7 @@ import { Card } from "./Card";
 import { Description } from "./Description";
 import { FloatLabelTextInput } from "./FloatLabelTextInput";
 import { IntegerInput } from "./IntegerInput";
+import { KojiReactConfig } from "./KojiReactConfig";
 import { LoadingIndicator } from "./LoadingIndicator";
 import { MoneyInput } from "./MoneyInput";
 import { ReactBridge } from "./ReactBridge";
@@ -15,6 +16,7 @@ export {
   Description,
   FloatLabelTextInput,
   IntegerInput,
+  KojiReactConfig,
   LoadingIndicator,
   MoneyInput,
   ReactBridge,

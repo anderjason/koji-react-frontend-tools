@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ThemeToolbar = exports.SubmitButton = exports.ReactBridge = exports.MoneyInput = exports.LoadingIndicator = exports.IntegerInput = exports.FloatLabelTextInput = exports.Description = exports.Card = exports.AlignBottom = void 0;
+exports.ThemeToolbar = exports.SubmitButton = exports.ReactBridge = exports.MoneyInput = exports.LoadingIndicator = exports.KojiReactConfig = exports.IntegerInput = exports.FloatLabelTextInput = exports.Description = exports.Card = exports.AlignBottom = void 0;
 const AlignBottom_1 = require("./AlignBottom");
 Object.defineProperty(exports, "AlignBottom", { enumerable: true, get: function () { return AlignBottom_1.AlignBottom; } });
 const Card_1 = require("./Card");
@@ -11,6 +11,8 @@ const FloatLabelTextInput_1 = require("./FloatLabelTextInput");
 Object.defineProperty(exports, "FloatLabelTextInput", { enumerable: true, get: function () { return FloatLabelTextInput_1.FloatLabelTextInput; } });
 const IntegerInput_1 = require("./IntegerInput");
 Object.defineProperty(exports, "IntegerInput", { enumerable: true, get: function () { return IntegerInput_1.IntegerInput; } });
+const KojiReactConfig_1 = require("./KojiReactConfig");
+Object.defineProperty(exports, "KojiReactConfig", { enumerable: true, get: function () { return KojiReactConfig_1.KojiReactConfig; } });
 const LoadingIndicator_1 = require("./LoadingIndicator");
 Object.defineProperty(exports, "LoadingIndicator", { enumerable: true, get: function () { return LoadingIndicator_1.LoadingIndicator; } });
 const MoneyInput_1 = require("./MoneyInput");
