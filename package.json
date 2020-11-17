@@ -1,0 +1,54 @@
+{
+  "name": "@anderjason/koji-react-frontend-tools",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com:anderjason/koji-react-frontend-tools.git"
+  },
+  "author": "Jason Anderson",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "build": "npm run clean && tsc",
+    "clean": "rm -rf dist && rm -rf test",
+    "test": "tsc -p tsconfig.test.json && node test/index.test && rm -rf test",
+    "examples": "webpack-dev-server --config ./examples/webpack.config.js --open"
+  },
+  "files": [
+    "dist/**/*"
+  ],
+  "dependencies": {
+    "@anderjason/color": "^2.0.0",
+    "@anderjason/geometry": "^3.0.0",
+    "@anderjason/koji-frontend-tools": "git+https://github.com/anderjason/koji-frontend-tools.git",
+    "@anderjason/money": "^1.0.0",
+    "@anderjason/observable": "^3.2.0",
+    "@anderjason/tests": "^1.0.1",
+    "@anderjason/time": "^2.0.2",
+    "@anderjason/util": "^2.0.3",
+    "@anderjason/web": "^6.2.3",
+    "@withkoji/vcc": "^1.1.42",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "skytree": "^9.3.0"
+  },
+  "devDependencies": {
+    "@anderjason/example-tools": "git+https://github.com/anderjason/example-tools.git",
+    "@anderjason/skytree-devtools": "git+https://github.com/anderjason/skytree-devtools.git",
+    "@types/node": "^14.14.7",
+    "@types/react": "^16.9.56",
+    "@types/react-dom": "^16.9.9",
+    "html-webpack-plugin": "^4.5.0",
+    "ts-loader": "^8.0.9",
+    "typescript": "^4.0.5",
+    "webpack": "4.44.2",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "bugs": {
+    "url": "https://github.com/anderjason/koji-react-frontend-tools/issues"
+  },
+  "homepage": "https://github.com/anderjason/koji-react-frontend-tools#readme"
+}

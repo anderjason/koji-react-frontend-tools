@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "declaration": true,
+    "module": "commonjs",
+    "noImplicitAny": true,
+    "outDir": "./dist/",
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "target": "es2017",
+    "jsx": "react",
+    "typeRoots": ["node_modules/@types"]
+  },
+  "exclude": ["src/**/*.test.ts"],
+  "include": ["src/**/*"]
+}
