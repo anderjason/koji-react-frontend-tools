@@ -1,6 +1,7 @@
 import * as React from "react";
 import { ValuePath } from "@anderjason/util";
 export interface KojiReactConfigRenderParams {
+    isRemixing: boolean;
     vccData: any;
     update: (path: string[], value: any) => void;
 }

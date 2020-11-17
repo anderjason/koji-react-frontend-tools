@@ -4,6 +4,7 @@ import { Koji } from "@anderjason/koji-frontend-tools";
 import { ValuePath } from "@anderjason/util";
 
 export interface KojiReactConfigRenderParams {
+  isRemixing: boolean;
   vccData: any;
   update: (path: string[], value: any) => void;
 }
@@ -57,6 +58,7 @@ export class KojiReactConfig extends React.Component<
 
   render() {
     const output = this.props.render({
+      isRemixing: Koji.instance.isRemixing.value,
       vccData: this.state.vccData,
       update: this.update,
     });

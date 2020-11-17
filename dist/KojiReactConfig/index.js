@@ -36,6 +36,7 @@ class KojiReactConfig extends React.Component {
     }
     render() {
         const output = this.props.render({
+            isRemixing: koji_frontend_tools_1.Koji.instance.isRemixing.value,
             vccData: this.state.vccData,
             update: this.update,
         });
