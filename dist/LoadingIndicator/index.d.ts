@@ -1,12 +1,12 @@
 import * as React from "react";
+import { Color } from "@anderjason/color";
 export interface LoadingIndicatorProps {
-    hexColor: string;
+    color: Color;
 }
 export declare class LoadingIndicator extends React.PureComponent<LoadingIndicatorProps, any> {
     private _ref;
     private _actor;
     private _color;
-    private _hexColor;
     componentDidUpdate(): void;
     componentDidMount(): void;
     componentWillUnmount(): void;

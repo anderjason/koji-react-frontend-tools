@@ -1,23 +1,28 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.LoadingIndicator = void 0;
+exports.DisplayText = void 0;
 const React = require("react");
 const koji_frontend_tools_1 = require("@anderjason/koji-frontend-tools");
-const color_1 = require("@anderjason/color");
 const observable_1 = require("@anderjason/observable");
-class LoadingIndicator extends React.PureComponent {
+const color_1 = require("@anderjason/color");
+class DisplayText extends React.PureComponent {
     constructor() {
         super(...arguments);
         this._ref = React.createRef();
+        this._text = observable_1.Observable.ofEmpty(observable_1.Observable.isStrictEqual);
         this._color = observable_1.Observable.ofEmpty(color_1.Color.isEqual);
     }
     componentDidUpdate() {
+        this._text.setValue(this.props.text);
         this._color.setValue(this.props.color);
     }
     componentDidMount() {
+        this._text.setValue(this.props.text);
         this._color.setValue(this.props.color);
-        this._actor = new koji_frontend_tools_1.LoadingIndicator({
+        this._actor = new koji_frontend_tools_1.DisplayText({
             parentElement: this._ref.current,
+            text: this._text,
+            displayType: this.props.displayType,
             color: this._color,
         });
         this._actor.activate();
@@ -32,5 +37,5 @@ class LoadingIndicator extends React.PureComponent {
         return React.createElement("div", { ref: this._ref });
     }
 }
-exports.LoadingIndicator = LoadingIndicator;
+exports.DisplayText = DisplayText;
 //# sourceMappingURL=index.js.map

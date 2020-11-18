@@ -14,16 +14,20 @@ export class LoadingIndicatorDemo extends React.Component<
     this.props.demoActor.exampleCode.setValue({
       language: "jsx",
       code: `
+import { Color } from "@anderjason/color";
+
+const white = Color.givenHexColor("#FFF");
+
 class Demo extends React.Component { 
   render() {
     return (
-      <LoadingIndicator hexColor="#FFF" />
+      <LoadingIndicator color={white} />
     );
   }
 }
       `,
     });
 
-    return <LoadingIndicator hexColor="#FFF" />;
+    return <LoadingIndicator color={white} />;
   }
 }
