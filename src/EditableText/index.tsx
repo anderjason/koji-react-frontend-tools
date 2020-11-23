@@ -1,37 +1,42 @@
 import * as React from "react";
 import { Actor } from "skytree";
-import { DisplayText as DisplayTextActor } from "@anderjason/koji-frontend-tools";
+import { EditableText as EditableTextActor } from "@anderjason/koji-frontend-tools";
 import { Observable } from "@anderjason/observable";
 import { DisplayTextType } from "@anderjason/koji-frontend-tools/dist/DisplayText";
 import { Color } from "@anderjason/color";
 import { KojiTheme } from "@anderjason/koji-frontend-tools/dist/KojiAppearance";
 
-export interface DisplayTextProps {
-  text: string;
+export interface EditableTextProps {
+  onChange: (value: string) => void;
   displayType: DisplayTextType;
+  placeholderLabel: string;
 
+  defaultValue?: string;
   theme?: KojiTheme;
 }
 
-export class DisplayText extends React.PureComponent<DisplayTextProps, any> {
+export class EditableText extends React.PureComponent<EditableTextProps, any> {
   private _ref = React.createRef<HTMLDivElement>();
   private _actor: Actor;
-  private _text = Observable.ofEmpty<string>(Observable.isStrictEqual);
   private _theme = Observable.ofEmpty<KojiTheme>(Observable.isStrictEqual);
 
   componentDidUpdate() {
-    this._text.setValue(this.props.text);
     this._theme.setValue(this.props.theme);
   }
 
   componentDidMount() {
-    this._text.setValue(this.props.text);
+    const value = Observable.givenValue(
+      this.props.defaultValue,
+      Observable.isStrictEqual
+    );
+
     this._theme.setValue(this.props.theme);
 
-    this._actor = new DisplayTextActor({
+    this._actor = new EditableTextActor({
       parentElement: this._ref.current,
-      text: this._text,
+      output: value,
       displayType: this.props.displayType,
+      placeholderLabel: this.props.placeholderLabel,
       theme: this._theme,
     });
     this._actor.activate();

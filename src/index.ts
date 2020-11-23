@@ -1,6 +1,7 @@
 import { AlignBottom } from "./AlignBottom";
 import { Card } from "./Card";
 import { DisplayText } from "./DisplayText";
+import { EditableText } from "./EditableText";
 import { FloatLabelTextInput } from "./FloatLabelTextInput";
 import { IntegerInput } from "./IntegerInput";
 import { KojiReactConfig } from "./KojiReactConfig";
@@ -14,6 +15,7 @@ export {
   AlignBottom,
   Card,
   DisplayText,
+  EditableText,
   FloatLabelTextInput,
   IntegerInput,
   KojiReactConfig,

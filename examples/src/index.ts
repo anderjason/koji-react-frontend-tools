@@ -9,6 +9,7 @@ import { MoneyInputDemo } from "./MoneyInputDemo";
 import { ThemeToolbarDemo } from "./ThemeToolbarDemo";
 import { LoadingIndicatorDemo } from "./LoadingIndicatorDemo";
 import { DisplayTextDemo } from "./DisplayTextDemo";
+import { EditableTextDemo } from "./EditableTextDemo";
 
 const definitions = ObservableArray.givenValues<ExampleDefinition>([
   {
@@ -21,6 +22,12 @@ const definitions = ObservableArray.givenValues<ExampleDefinition>([
     title: "Display text",
     actor: new ReactDemoContainer({
       component: DisplayTextDemo,
+    }),
+  },
+  {
+    title: "Editable text",
+    actor: new ReactDemoContainer({
+      component: EditableTextDemo,
     }),
   },
   {
