@@ -44,6 +44,6 @@ export class DisplayText extends React.PureComponent<DisplayTextProps, any> {
   }
 
   render() {
-    return <div ref={this._ref}></div>;
+    return <div className="kft-text" ref={this._ref}></div>;
   }
 }

@@ -1,6 +1,5 @@
 import { AlignBottom } from "./AlignBottom";
 import { Card } from "./Card";
-import { Description } from "./Description";
 import { DisplayText } from "./DisplayText";
 import { FloatLabelTextInput } from "./FloatLabelTextInput";
 import { IntegerInput } from "./IntegerInput";
@@ -10,4 +9,4 @@ import { MoneyInput } from "./MoneyInput";
 import { ReactBridge } from "./ReactBridge";
 import { SubmitButton } from "./SubmitButton";
 import { ThemeToolbar } from "./ThemeToolbar";
-export { AlignBottom, Card, Description, DisplayText, FloatLabelTextInput, IntegerInput, KojiReactConfig, LoadingIndicator, MoneyInput, ReactBridge, SubmitButton, ThemeToolbar, };
+export { AlignBottom, Card, DisplayText, FloatLabelTextInput, IntegerInput, KojiReactConfig, LoadingIndicator, MoneyInput, ReactBridge, SubmitButton, ThemeToolbar, };

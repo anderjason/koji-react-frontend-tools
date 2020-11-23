@@ -16,6 +16,7 @@ class MoneyInput extends React.Component {
             parentElement: this._ref.current,
             value,
             persistentLabel: this.props.persistentLabel,
+            maxValue: this.props.maxValue,
         });
         this._actor.activate();
         this._actor.cancelOnDeactivate(value.didChange.subscribe((money) => {
@@ -31,7 +32,7 @@ class MoneyInput extends React.Component {
         }
     }
     render() {
-        return React.createElement("div", { ref: this._ref });
+        return React.createElement("div", { className: "kft-control", ref: this._ref });
     }
 }
 exports.MoneyInput = MoneyInput;

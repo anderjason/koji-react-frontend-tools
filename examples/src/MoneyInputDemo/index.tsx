@@ -1,8 +1,10 @@
 import { Currency, Money } from "@anderjason/money";
 import { ElementStyle } from "@anderjason/web";
 import * as React from "react";
-import { AlignBottom, Card, MoneyInput } from "../../../src";
+import { AlignBottom, Card, DisplayText, MoneyInput } from "../../../src";
 import { ReactDemoComponentProps } from "../_internal/ReactDemoContainer";
+
+const maxPrice = new Money(10000, Currency.ofUSD());
 
 export class MoneyInputDemo extends React.Component<
   ReactDemoComponentProps,
@@ -13,11 +15,15 @@ export class MoneyInputDemo extends React.Component<
   };
 
   render() {
+    const { price } = this.state;
+
     // display example code in the sidebar
     this.props.demoActor.exampleCode.setValue({
       language: "jsx",
       code: `
 import { Money, Currency } from "@anderjason/money";
+
+const maxPrice = new Money(10000, Currency.ofUSD());
 
 class Demo extends React.Component {
   state = {
@@ -27,17 +33,21 @@ class Demo extends React.Component {
   render() {
     const { price } = this.state;
 
+    const formattedPrice = price.toString("$1.00");
+
     return (
       <AlignBottom isRemixing={false}>
         <Card>
-          <div style={{ marginBottom: "1rem" }}>
-            The price is {price.toString("$1.00")}
-          </div>
+          <DisplayText
+            displayType="description"
+            text={\`The price is \${formattedPrice}\`}
+          />
 
           <MoneyInput
             placeholderLabel="Price"
             persistentLabel="Set price"
             defaultValue={price}
+            maxValue={maxPrice}
             onChange={price => this.setState({ price })}
           />
         </Card>
@@ -51,13 +61,15 @@ class Demo extends React.Component {
     return (
       <AlignBottom isRemixing={false}>
         <Card>
-          <div style={{ marginBottom: "1rem" }}>
-            The price is {this.state.price.toString("$1.00")}
-          </div>
+          <DisplayText
+            displayType="description"
+            text={`The price is ${price.toString("$1.00")}`}
+          />
 
           <MoneyInput
             persistentLabel="Set price"
-            defaultValue={this.state.price}
+            defaultValue={price}
+            maxValue={maxPrice}
             onChange={(price) => this.setState({ price })}
           />
         </Card>

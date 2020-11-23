@@ -10,6 +10,7 @@ export interface MoneyInputProps {
   defaultValue?: Money;
   placeholderLabel?: string;
   persistentLabel?: string;
+  maxValue?: Money;
 }
 
 export class MoneyInput extends React.Component<MoneyInputProps, any> {
@@ -26,6 +27,7 @@ export class MoneyInput extends React.Component<MoneyInputProps, any> {
       parentElement: this._ref.current,
       value,
       persistentLabel: this.props.persistentLabel,
+      maxValue: this.props.maxValue,
     });
 
     this._actor.activate();
@@ -47,6 +49,6 @@ export class MoneyInput extends React.Component<MoneyInputProps, any> {
   }
 
   render() {
-    return <div ref={this._ref}></div>;
+    return <div className="kft-control" ref={this._ref}></div>;
   }
 }

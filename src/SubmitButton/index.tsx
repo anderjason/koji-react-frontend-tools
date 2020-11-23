@@ -46,6 +46,6 @@ export class SubmitButton extends React.PureComponent<SubmitButtonProps, any> {
   }
 
   render() {
-    return <button ref={this._ref} />;
+    return <button className="kft-control" ref={this._ref} />;
   }
 }

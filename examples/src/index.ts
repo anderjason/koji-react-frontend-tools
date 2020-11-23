@@ -3,7 +3,6 @@ import { ExampleDefinition, ExamplesHome } from "@anderjason/example-tools";
 import { ReactDemoContainer } from "./_internal/ReactDemoContainer";
 import { SubmitButtonDemo } from "./SubmitButtonDemo";
 import { AlignBottomDemo } from "./AlignBottomDemo";
-import { DescriptionDemo } from "./DescriptionDemo";
 import { FloatLabelTextInputDemo } from "./FloatLabelTextInputDemo";
 import { IntegerInputDemo } from "./IntegerInputDemo";
 import { MoneyInputDemo } from "./MoneyInputDemo";
@@ -16,12 +15,6 @@ const definitions = ObservableArray.givenValues<ExampleDefinition>([
     title: "Align bottom",
     actor: new ReactDemoContainer({
       component: AlignBottomDemo,
-    }),
-  },
-  {
-    title: "Description",
-    actor: new ReactDemoContainer({
-      component: DescriptionDemo,
     }),
   },
   {

@@ -34,7 +34,7 @@ class DisplayText extends React.PureComponent {
         }
     }
     render() {
-        return React.createElement("div", { ref: this._ref });
+        return React.createElement("div", { className: "kft-text", ref: this._ref });
     }
 }
 exports.DisplayText = DisplayText;

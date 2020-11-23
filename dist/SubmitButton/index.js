@@ -36,7 +36,7 @@ class SubmitButton extends React.PureComponent {
         }
     }
     render() {
-        return React.createElement("button", { ref: this._ref });
+        return React.createElement("button", { className: "kft-control", ref: this._ref });
     }
 }
 exports.SubmitButton = SubmitButton;

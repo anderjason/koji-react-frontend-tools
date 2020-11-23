@@ -47,6 +47,6 @@ export class IntegerInput extends React.Component<IntegerInputProps, any> {
   }
 
   render() {
-    return <div ref={this._ref}></div>;
+    return <div className="kft-control" ref={this._ref}></div>;
   }
 }

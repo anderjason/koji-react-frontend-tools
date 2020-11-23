@@ -52,6 +52,6 @@ export class FloatLabelTextInput extends React.Component<
   }
 
   render() {
-    return <div ref={this._ref}></div>;
+    return <div className="kft-control" ref={this._ref}></div>;
   }
 }

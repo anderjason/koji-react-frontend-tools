@@ -5,6 +5,7 @@ export interface MoneyInputProps {
     defaultValue?: Money;
     placeholderLabel?: string;
     persistentLabel?: string;
+    maxValue?: Money;
 }
 export declare class MoneyInput extends React.Component<MoneyInputProps, any> {
     private _ref;
