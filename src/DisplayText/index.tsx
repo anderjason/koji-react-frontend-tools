@@ -3,7 +3,6 @@ import { Actor } from "skytree";
 import { DisplayText as DisplayTextActor } from "@anderjason/koji-frontend-tools";
 import { Observable } from "@anderjason/observable";
 import { DisplayTextType } from "@anderjason/koji-frontend-tools/dist/DisplayText";
-import { Color } from "@anderjason/color";
 import { KojiTheme } from "@anderjason/koji-frontend-tools/dist/KojiAppearance";
 
 export interface DisplayTextProps {

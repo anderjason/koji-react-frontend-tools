@@ -1,41 +1,106 @@
+import {
+  KojiAppearance,
+  KojiTheme,
+} from "@anderjason/koji-frontend-tools/dist/KojiAppearance";
+import { SubmitButtonMode } from "@anderjason/koji-frontend-tools/dist/SubmitButton";
 import * as React from "react";
-import { AlignBottom, SubmitButton, Card } from "../../../src";
+import { AlignBottom, SubmitButton, Card, ThemeToolbar } from "../../../src";
 import { ReactDemoComponentProps } from "../_internal/ReactDemoContainer";
+
+interface SubmitButtonDemoState {
+  buttonMode: SubmitButtonMode;
+  theme: KojiTheme;
+}
 
 export class SubmitButtonDemo extends React.Component<
   ReactDemoComponentProps,
-  any
+  SubmitButtonDemoState
 > {
   state = {
-    isLocked: true,
-  };
+    buttonMode: "ready",
+    theme: KojiAppearance.themes.get("kojiBlack"),
+  } as SubmitButtonDemoState;
 
-  onClickUnlock = () => {
-    const { isLocked } = this.state;
+  onClickUnlock() {
+    if (this.state.buttonMode !== "ready") {
+      return;
+    }
 
     this.setState({
-      isLocked: !isLocked,
+      buttonMode: "busy",
     });
-  };
+
+    setTimeout(() => {
+      this.setState({
+        buttonMode: "success",
+      });
+    }, 1000);
+
+    setTimeout(() => {
+      this.setState({
+        buttonMode: "ready",
+      });
+    }, 3000);
+  }
 
   render() {
-    const { isLocked } = this.state;
+    const { buttonMode, theme } = this.state;
 
     // display example code in the sidebar
     this.props.demoActor.exampleCode.setValue({
       language: "jsx",
       code: `
+import { KojiAppearance } from "@anderjason/koji-frontend-tools";
+
 class Demo extends React.Component {
+  state = {
+    buttonMode: "ready",
+    theme: KojiAppearance.themes.get("kojiBlack"),
+  };
+
+  onClickUnlock() {
+    if (this.state.buttonMode !== "ready") {
+      return;
+    }
+
+    this.setState({
+      buttonMode: "busy",
+    });
+
+    setTimeout(() => {
+      this.setState({
+        buttonMode: "success",
+      });
+    }, 1000);
+
+    setTimeout(() => {
+      this.setState({
+        buttonMode: "ready",
+      });
+    }, 3000);
+  };
+
   render() {
+    const { theme, buttonMode } = this.state;
+
     return (
-      <AlignBottom isRemixing={false}>
-        <Card>
-          <SubmitButton
-            text="${isLocked ? "Unlock now" : "Unlocked!"}"
-            onClick={() => this.onClickUnlock()}
-          />
-        </Card>
-      </AlignBottom>
+      <>
+        <ThemeToolbar
+          defaultValue={theme}
+          onChange={(theme) => this.setState({ theme })}
+        />
+
+        <AlignBottom isRemixing={false}>
+          <Card>
+            <SubmitButton
+              text="Unlock now"
+              mode="${buttonMode}"
+              theme={theme}
+              onClick={() => this.onClickUnlock()}
+            />
+          </Card>
+        </AlignBottom>
+      </>
     );
   }
 }
@@ -43,14 +108,23 @@ class Demo extends React.Component {
     });
 
     return (
-      <AlignBottom isRemixing={false}>
-        <Card>
-          <SubmitButton
-            text={isLocked ? "Unlock now" : "Unlocked!"}
-            onClick={this.onClickUnlock}
-          />
-        </Card>
-      </AlignBottom>
+      <>
+        <ThemeToolbar
+          defaultValue={theme}
+          onChange={(theme) => this.setState({ theme })}
+        />
+
+        <AlignBottom isRemixing={false}>
+          <Card>
+            <SubmitButton
+              text="Unlock now"
+              mode={buttonMode}
+              theme={theme}
+              onClick={this.onClickUnlock}
+            />
+          </Card>
+        </AlignBottom>
+      </>
     );
   }
 }

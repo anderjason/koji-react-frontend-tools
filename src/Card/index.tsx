@@ -1,10 +1,21 @@
 import * as React from "react";
-import { Actor } from "skytree";
 import { Card as CardActor } from "@anderjason/koji-frontend-tools";
+import ReactDOM = require("react-dom");
 
-export class Card extends React.PureComponent<any, any> {
+export interface CardProps {
+  children: any;
+}
+
+export class Card extends React.Component<any, any> {
   private _ref = React.createRef<HTMLDivElement>();
-  private _actor: Actor;
+  private _actor: CardActor;
+
+  componentDidUpdate() {
+    ReactDOM.render(
+      <React.Fragment>{this.props.children}</React.Fragment>,
+      this._actor.baseElement
+    );
+  }
 
   componentDidMount() {
     this._actor = new CardActor({
@@ -14,6 +25,11 @@ export class Card extends React.PureComponent<any, any> {
       },
     });
     this._actor.activate();
+
+    ReactDOM.render(
+      <React.Fragment>{this.props.children}</React.Fragment>,
+      this._actor.baseElement
+    );
   }
 
   componentWillUnmount() {
@@ -24,6 +40,6 @@ export class Card extends React.PureComponent<any, any> {
   }
 
   render() {
-    return <div ref={this._ref}>{this.props.children}</div>;
+    return <div ref={this._ref} />;
   }
 }

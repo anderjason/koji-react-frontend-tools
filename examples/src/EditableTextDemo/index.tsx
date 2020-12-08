@@ -1,6 +1,12 @@
 import { KojiAppearance } from "@anderjason/koji-frontend-tools";
 import * as React from "react";
-import { AlignBottom, Card, EditableText, ThemeToolbar } from "../../../src";
+import {
+  AlignBottom,
+  Card,
+  EditableText,
+  ThemeToolbar,
+  SubmitButton,
+} from "../../../src";
 import { ReactDemoComponentProps } from "../_internal/ReactDemoContainer";
 
 export class EditableTextDemo extends React.Component<
@@ -39,12 +45,18 @@ class Demo extends React.Component {
           <Card>
             <EditableText
               displayType="title"
-              placeholderLabel="Product title"
+              placeholderLabel="Title"
               theme={theme}
             />
             <EditableText
               displayType="description"
-              placeholderLabel="Product description"
+              placeholderLabel="Description"
+            />
+            <SubmitButton
+              text="Action"
+              mode="ready"
+              theme={theme}
+              onClick={() => {}}
             />
           </Card>
         </AlignBottom>
@@ -66,14 +78,20 @@ class Demo extends React.Component {
           <Card>
             <EditableText
               displayType="title"
-              placeholderLabel="Product title"
+              placeholderLabel="Title"
               theme={theme}
               onChange={() => {}}
             />
             <EditableText
               displayType="description"
-              placeholderLabel="Product description"
+              placeholderLabel="Description"
               onChange={() => {}}
+            />
+            <SubmitButton
+              text="Action"
+              mode="ready"
+              theme={theme}
+              onClick={() => {}}
             />
           </Card>
         </AlignBottom>

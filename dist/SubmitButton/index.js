@@ -9,23 +9,29 @@ class SubmitButton extends React.PureComponent {
         super(...arguments);
         this._ref = React.createRef();
         this._text = observable_1.Observable.ofEmpty(observable_1.Observable.isStrictEqual);
+        this._theme = observable_1.Observable.ofEmpty(observable_1.Observable.isStrictEqual);
+        this._mode = observable_1.Observable.ofEmpty(observable_1.Observable.isStrictEqual);
     }
     componentDidUpdate() {
         this._text.setValue(this.props.text);
+        this._theme.setValue(this.props.theme);
+        this._mode.setValue(this.props.mode);
     }
     componentDidMount() {
         this._text.setValue(this.props.text);
+        this._theme.setValue(this.props.theme);
+        this._mode.setValue(this.props.mode);
         this._actor = new koji_frontend_tools_1.SubmitButton({
             target: {
                 type: "thisElement",
                 element: this._ref.current,
             },
-            buttonMode: "ready",
+            buttonMode: this._mode,
             onClick: () => {
                 this.props.onClick();
             },
             text: this._text,
-            theme: koji_frontend_tools_1.KojiAppearance.themes.get("kojiBlack"),
+            theme: this._theme,
         });
         this._actor.activate();
     }

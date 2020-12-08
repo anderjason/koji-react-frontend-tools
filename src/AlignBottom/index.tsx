@@ -7,7 +7,7 @@ export interface AlignBottomProps {
   isRemixing: boolean;
 }
 
-export class AlignBottom extends React.PureComponent<AlignBottomProps, any> {
+export class AlignBottom extends React.Component<AlignBottomProps, any> {
   private _ref = React.createRef<HTMLDivElement>();
   private _actor: Actor;
   private _isRemixing = Observable.ofEmpty<boolean>(Observable.isStrictEqual);

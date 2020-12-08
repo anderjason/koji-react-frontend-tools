@@ -1,7 +1,9 @@
 import * as React from "react";
 import { ValuePath } from "@anderjason/util";
+import { KojiMode } from "@anderjason/koji-frontend-tools/dist/KojiTools";
 export interface KojiState {
-    isRemixing: boolean;
+    sessionMode: KojiMode;
+    currentMode: KojiMode;
     vccData: any;
     update: (path: string | string[] | ValuePath, value: any) => void;
 }

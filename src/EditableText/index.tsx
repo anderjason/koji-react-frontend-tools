@@ -1,10 +1,9 @@
+import { EditableText as EditableTextActor } from "@anderjason/koji-frontend-tools";
+import { DisplayTextType } from "@anderjason/koji-frontend-tools/dist/DisplayText";
+import { KojiTheme } from "@anderjason/koji-frontend-tools/dist/KojiAppearance";
+import { Observable } from "@anderjason/observable";
 import * as React from "react";
 import { Actor } from "skytree";
-import { EditableText as EditableTextActor } from "@anderjason/koji-frontend-tools";
-import { Observable } from "@anderjason/observable";
-import { DisplayTextType } from "@anderjason/koji-frontend-tools/dist/DisplayText";
-import { Color } from "@anderjason/color";
-import { KojiTheme } from "@anderjason/koji-frontend-tools/dist/KojiAppearance";
 
 export interface EditableTextProps {
   onChange: (value: string) => void;
@@ -15,7 +14,7 @@ export interface EditableTextProps {
   theme?: KojiTheme;
 }
 
-export class EditableText extends React.PureComponent<EditableTextProps, any> {
+export class EditableText extends React.Component<EditableTextProps, any> {
   private _ref = React.createRef<HTMLDivElement>();
   private _actor: Actor;
   private _theme = Observable.ofEmpty<KojiTheme>(Observable.isStrictEqual);

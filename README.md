@@ -7,3 +7,9 @@
 ## API Reference
 
 `TODO`
+
+## Examples
+
+`npm run examples`
+
+Browse to http://localhost:9000

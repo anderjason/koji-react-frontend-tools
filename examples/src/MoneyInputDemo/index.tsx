@@ -63,7 +63,9 @@ class Demo extends React.Component {
         <Card>
           <DisplayText
             displayType="description"
-            text={`The price is ${price.toString("$1.00")}`}
+            text={`The price is ${price.toString(
+              "$1.00"
+            )} (demo max is $99.99)`}
           />
 
           <MoneyInput

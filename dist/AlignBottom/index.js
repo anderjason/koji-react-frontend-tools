@@ -4,7 +4,7 @@ exports.AlignBottom = void 0;
 const React = require("react");
 const koji_frontend_tools_1 = require("@anderjason/koji-frontend-tools");
 const observable_1 = require("@anderjason/observable");
-class AlignBottom extends React.PureComponent {
+class AlignBottom extends React.Component {
     constructor() {
         super(...arguments);
         this._ref = React.createRef();

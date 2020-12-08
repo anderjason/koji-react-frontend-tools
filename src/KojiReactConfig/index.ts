@@ -1,10 +1,12 @@
 import * as React from "react";
 import { Receipt } from "@anderjason/observable";
-import { Koji } from "@anderjason/koji-frontend-tools";
+import { KojiTools } from "@anderjason/koji-frontend-tools";
 import { ValuePath } from "@anderjason/util";
+import { KojiMode } from "@anderjason/koji-frontend-tools/dist/KojiTools";
 
 export interface KojiState {
-  isRemixing: boolean;
+  sessionMode: KojiMode;
+  currentMode: KojiMode;
   vccData: any;
   update: (path: string | string[] | ValuePath, value: any) => void;
 }
@@ -28,7 +30,7 @@ export class KojiReactConfig extends React.Component<
   };
 
   componentDidMount() {
-    this._receipt = Koji.instance.vccData.state.didChange.subscribe(
+    this._receipt = KojiTools.instance.vccData.state.didChange.subscribe(
       (vccData) => {
         this.setState({
           vccData,
@@ -55,12 +57,13 @@ export class KojiReactConfig extends React.Component<
       valuePath = path;
     }
 
-    Koji.instance.vccData.update(valuePath, value);
+    KojiTools.instance.vccData.update(valuePath, value);
   };
 
   render() {
     const output = this.props.render({
-      isRemixing: Koji.instance.isRemixing.value,
+      sessionMode: KojiTools.instance.sessionMode.value,
+      currentMode: KojiTools.instance.currentMode.value,
       vccData: this.state.vccData,
       update: this.update,
     });

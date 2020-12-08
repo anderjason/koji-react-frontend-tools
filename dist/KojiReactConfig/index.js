@@ -21,11 +21,11 @@ class KojiReactConfig extends React.Component {
             else {
                 valuePath = path;
             }
-            koji_frontend_tools_1.Koji.instance.vccData.update(valuePath, value);
+            koji_frontend_tools_1.KojiTools.instance.vccData.update(valuePath, value);
         };
     }
     componentDidMount() {
-        this._receipt = koji_frontend_tools_1.Koji.instance.vccData.state.didChange.subscribe((vccData) => {
+        this._receipt = koji_frontend_tools_1.KojiTools.instance.vccData.state.didChange.subscribe((vccData) => {
             this.setState({
                 vccData,
             });
@@ -39,7 +39,8 @@ class KojiReactConfig extends React.Component {
     }
     render() {
         const output = this.props.render({
-            isRemixing: koji_frontend_tools_1.Koji.instance.isRemixing.value,
+            sessionMode: koji_frontend_tools_1.KojiTools.instance.sessionMode.value,
+            currentMode: koji_frontend_tools_1.KojiTools.instance.currentMode.value,
             vccData: this.state.vccData,
             update: this.update,
         });
