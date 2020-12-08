@@ -39,6 +39,18 @@ export class EditableText extends React.Component<EditableTextProps, any> {
       theme: this._theme,
     });
     this._actor.activate();
+
+    this._actor.cancelOnDeactivate(
+      value.didChange.subscribe(text => {
+        try {
+          if (this.props.onChange != null) {
+            this.props.onChange(text);
+          }
+        } catch (err) {
+          console.warn(err);
+        }
+      })
+    );
   }
 
   componentWillUnmount() {

@@ -20,8 +20,13 @@ class MoneyInput extends React.Component {
         });
         this._actor.activate();
         this._actor.cancelOnDeactivate(value.didChange.subscribe((money) => {
-            if (this.props.onChange != null) {
-                this.props.onChange(money);
+            try {
+                if (this.props.onChange != null) {
+                    this.props.onChange(money);
+                }
+            }
+            catch (err) {
+                console.warn(err);
             }
         }));
     }

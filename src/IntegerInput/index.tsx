@@ -32,8 +32,12 @@ export class IntegerInput extends React.Component<IntegerInputProps, any> {
 
     this._actor.cancelOnDeactivate(
       value.didChange.subscribe((n) => {
-        if (this.props.onChange != null) {
-          this.props.onChange(n);
+        try {
+          if (this.props.onChange != null) {
+            this.props.onChange(n);
+          }
+        } catch (err) {
+          console.warn(err);
         }
       })
     );

@@ -34,8 +34,12 @@ export class MoneyInput extends React.Component<MoneyInputProps, any> {
 
     this._actor.cancelOnDeactivate(
       value.didChange.subscribe((money) => {
-        if (this.props.onChange != null) {
-          this.props.onChange(money);
+        try {
+          if (this.props.onChange != null) {
+            this.props.onChange(money);
+          }
+        } catch (err) {
+          console.warn(err);
         }
       })
     );

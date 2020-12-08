@@ -20,9 +20,14 @@ class FloatLabelTextInput extends React.Component {
             persistentLabel: this.props.persistentLabel,
         });
         this._actor.activate();
-        this._actor.cancelOnDeactivate(value.didChange.subscribe((str) => {
-            if (this.props.onChange != null) {
-                this.props.onChange(str);
+        this._actor.cancelOnDeactivate(value.didChange.subscribe((text) => {
+            try {
+                if (this.props.onChange != null) {
+                    this.props.onChange(text);
+                }
+            }
+            catch (err) {
+                console.warn(err);
             }
         }));
     }
