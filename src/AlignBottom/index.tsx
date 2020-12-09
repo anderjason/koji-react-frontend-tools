@@ -2,6 +2,7 @@ import * as React from "react";
 import { Actor } from "skytree";
 import { AlignBottom as AlignBottomActor } from "@anderjason/koji-frontend-tools";
 import { Observable } from "@anderjason/observable";
+import { BooleanUtil } from "@anderjason/util/dist/BooleanUtil";
 
 export interface AlignBottomProps {
   isRemixing: boolean;
@@ -13,11 +14,11 @@ export class AlignBottom extends React.Component<AlignBottomProps, any> {
   private _isRemixing = Observable.ofEmpty<boolean>(Observable.isStrictEqual);
 
   componentDidUpdate() {
-    this._isRemixing.setValue(this.props.isRemixing || false);
+    this._isRemixing.setValue(BooleanUtil.booleanGivenBooleanLike(this.props.isRemixing || false));
   }
 
   componentDidMount() {
-    this._isRemixing.setValue(this.props.isRemixing || false);
+    this._isRemixing.setValue(BooleanUtil.booleanGivenBooleanLike(this.props.isRemixing || false));
 
     this._actor = new AlignBottomActor({
       target: {

@@ -4,6 +4,7 @@ exports.AlignBottom = void 0;
 const React = require("react");
 const koji_frontend_tools_1 = require("@anderjason/koji-frontend-tools");
 const observable_1 = require("@anderjason/observable");
+const BooleanUtil_1 = require("@anderjason/util/dist/BooleanUtil");
 class AlignBottom extends React.Component {
     constructor() {
         super(...arguments);
@@ -11,10 +12,10 @@ class AlignBottom extends React.Component {
         this._isRemixing = observable_1.Observable.ofEmpty(observable_1.Observable.isStrictEqual);
     }
     componentDidUpdate() {
-        this._isRemixing.setValue(this.props.isRemixing || false);
+        this._isRemixing.setValue(BooleanUtil_1.BooleanUtil.booleanGivenBooleanLike(this.props.isRemixing || false));
     }
     componentDidMount() {
-        this._isRemixing.setValue(this.props.isRemixing || false);
+        this._isRemixing.setValue(BooleanUtil_1.BooleanUtil.booleanGivenBooleanLike(this.props.isRemixing || false));
         this._actor = new koji_frontend_tools_1.AlignBottom({
             target: {
                 type: "thisElement",
