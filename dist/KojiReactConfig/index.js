@@ -8,7 +8,7 @@ class KojiReactConfig extends React.Component {
     constructor() {
         super(...arguments);
         this.state = {
-            vccData: undefined,
+            vccData: koji_frontend_tools_1.KojiTools.instance.vccData.state.value,
         };
         this.update = (path, value) => {
             let valuePath;
@@ -29,7 +29,7 @@ class KojiReactConfig extends React.Component {
             this.setState({
                 vccData,
             });
-        }, true);
+        });
     }
     componentWillUnmount() {
         if (this._receipt != null) {

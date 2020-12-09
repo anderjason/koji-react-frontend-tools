@@ -16,7 +16,7 @@ export interface KojiReactConfigState {
 export declare class KojiReactConfig extends React.Component<KojiReactConfigProps, KojiReactConfigState> {
     private _receipt;
     state: {
-        vccData: any;
+        vccData: unknown;
     };
     componentDidMount(): void;
     componentWillUnmount(): void;

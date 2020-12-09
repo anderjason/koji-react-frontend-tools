@@ -26,7 +26,7 @@ export class KojiReactConfig extends React.Component<
   private _receipt: Receipt;
 
   state = {
-    vccData: undefined,
+    vccData: KojiTools.instance.vccData.state.value,
   };
 
   componentDidMount() {
@@ -35,8 +35,7 @@ export class KojiReactConfig extends React.Component<
         this.setState({
           vccData,
         });
-      },
-      true
+      }
     );
   }
 
