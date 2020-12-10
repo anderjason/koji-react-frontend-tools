@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ThemeToolbar = exports.SubmitButton = exports.ReactBridge = exports.MoneyInput = exports.LoadingIndicator = exports.KojiReactConfig = exports.IntegerInput = exports.FloatLabelTextInput = exports.EditableText = exports.DisplayText = exports.Card = exports.AlignBottom = void 0;
+exports.ThemeToolbar = exports.SubmitButton = exports.ReactBridge = exports.MoneyInput = exports.LoadingIndicator = exports.KojiReactConfig = exports.IntegerInput = exports.FloatLabelTextInput = exports.FloatLabelTextarea = exports.EditableText = exports.DisplayText = exports.Card = exports.AlignBottom = void 0;
 const AlignBottom_1 = require("./AlignBottom");
 Object.defineProperty(exports, "AlignBottom", { enumerable: true, get: function () { return AlignBottom_1.AlignBottom; } });
 const Card_1 = require("./Card");
@@ -9,6 +9,8 @@ const DisplayText_1 = require("./DisplayText");
 Object.defineProperty(exports, "DisplayText", { enumerable: true, get: function () { return DisplayText_1.DisplayText; } });
 const EditableText_1 = require("./EditableText");
 Object.defineProperty(exports, "EditableText", { enumerable: true, get: function () { return EditableText_1.EditableText; } });
+const FloatLabelTextarea_1 = require("./FloatLabelTextarea");
+Object.defineProperty(exports, "FloatLabelTextarea", { enumerable: true, get: function () { return FloatLabelTextarea_1.FloatLabelTextarea; } });
 const FloatLabelTextInput_1 = require("./FloatLabelTextInput");
 Object.defineProperty(exports, "FloatLabelTextInput", { enumerable: true, get: function () { return FloatLabelTextInput_1.FloatLabelTextInput; } });
 const IntegerInput_1 = require("./IntegerInput");

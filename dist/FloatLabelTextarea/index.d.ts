@@ -1,12 +1,12 @@
 import * as React from "react";
-export interface FloatLabelTextInputProps {
+export interface FloatLabelTextareaProps {
     onChange: (value: string) => void;
     defaultValue?: string;
     placeholderLabel?: string;
     persistentLabel?: string;
     maxLength?: number;
 }
-export declare class FloatLabelTextInput extends React.Component<FloatLabelTextInputProps, any> {
+export declare class FloatLabelTextarea extends React.Component<FloatLabelTextareaProps, any> {
     private _ref;
     private _actor;
     componentDidMount(): void;

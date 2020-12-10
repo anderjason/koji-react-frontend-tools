@@ -10,6 +10,7 @@ import { ThemeToolbarDemo } from "./ThemeToolbarDemo";
 import { LoadingIndicatorDemo } from "./LoadingIndicatorDemo";
 import { DisplayTextDemo } from "./DisplayTextDemo";
 import { EditableTextDemo } from "./EditableTextDemo";
+import { FloatLabelTextareaDemo } from "./FloatLabelTextareaDemo";
 
 const definitions = ObservableArray.givenValues<ExampleDefinition>([
   {
@@ -28,6 +29,12 @@ const definitions = ObservableArray.givenValues<ExampleDefinition>([
     title: "Editable text",
     actor: new ReactDemoContainer({
       component: EditableTextDemo,
+    }),
+  },
+  {
+    title: "Float label textarea",
+    actor: new ReactDemoContainer({
+      component: FloatLabelTextareaDemo,
     }),
   },
   {

@@ -1,6 +1,7 @@
 import * as React from "react";
 export interface CardProps {
     children: any;
+    maxHeight?: number;
 }
 export declare class Card extends React.Component<any, any> {
     private _ref;

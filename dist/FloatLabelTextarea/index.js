@@ -1,17 +1,17 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.FloatLabelTextInput = void 0;
+exports.FloatLabelTextarea = void 0;
 const React = require("react");
 const koji_frontend_tools_1 = require("@anderjason/koji-frontend-tools");
 const observable_1 = require("@anderjason/observable");
-class FloatLabelTextInput extends React.Component {
+class FloatLabelTextarea extends React.Component {
     constructor() {
         super(...arguments);
         this._ref = React.createRef();
     }
     componentDidMount() {
         const value = observable_1.Observable.givenValue(this.props.defaultValue, observable_1.Observable.isStrictEqual);
-        this._actor = new koji_frontend_tools_1.FloatLabelTextInput({
+        this._actor = new koji_frontend_tools_1.FloatLabelTextarea({
             parentElement: this._ref.current,
             value,
             displayTextGivenValue: (v) => v,
@@ -42,5 +42,5 @@ class FloatLabelTextInput extends React.Component {
         return React.createElement("div", { className: "kft-control", ref: this._ref });
     }
 }
-exports.FloatLabelTextInput = FloatLabelTextInput;
+exports.FloatLabelTextarea = FloatLabelTextarea;
 //# sourceMappingURL=index.js.map

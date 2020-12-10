@@ -4,6 +4,8 @@ import ReactDOM = require("react-dom");
 
 export interface CardProps {
   children: any;
+
+  maxHeight?: number;
 }
 
 export class Card extends React.Component<any, any> {
@@ -23,6 +25,7 @@ export class Card extends React.Component<any, any> {
         type: "thisElement",
         element: this._ref.current,
       },
+      maxHeight: this.props.maxHeight
     });
     this._actor.activate();
 

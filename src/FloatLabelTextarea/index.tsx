@@ -1,9 +1,9 @@
 import * as React from "react";
 import { Actor } from "skytree";
-import { FloatLabelTextInput as FloatLabelTextInputActor } from "@anderjason/koji-frontend-tools";
+import { FloatLabelTextarea as FloatLabelTextareaActor } from "@anderjason/koji-frontend-tools";
 import { Observable } from "@anderjason/observable";
 
-export interface FloatLabelTextInputProps {
+export interface FloatLabelTextareaProps {
   onChange: (value: string) => void;
 
   defaultValue?: string;
@@ -12,8 +12,8 @@ export interface FloatLabelTextInputProps {
   maxLength?: number;
 }
 
-export class FloatLabelTextInput extends React.Component<
-  FloatLabelTextInputProps,
+export class FloatLabelTextarea extends React.Component<
+  FloatLabelTextareaProps,
   any
 > {
   private _ref = React.createRef<HTMLDivElement>();
@@ -25,7 +25,7 @@ export class FloatLabelTextInput extends React.Component<
       Observable.isStrictEqual
     );
 
-    this._actor = new FloatLabelTextInputActor<string>({
+    this._actor = new FloatLabelTextareaActor<string>({
       parentElement: this._ref.current,
       value,
       displayTextGivenValue: (v) => v,

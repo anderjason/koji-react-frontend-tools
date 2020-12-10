@@ -18,6 +18,7 @@ class Card extends React.Component {
                 type: "thisElement",
                 element: this._ref.current,
             },
+            maxHeight: this.props.maxHeight
         });
         this._actor.activate();
         ReactDOM.render(React.createElement(React.Fragment, null, this.props.children), this._actor.baseElement);

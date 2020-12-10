@@ -1,6 +1,6 @@
 {
   "name": "@anderjason/koji-react-frontend-tools",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "",
   "main": "./dist/index.js",
   "repository": {
@@ -22,7 +22,7 @@
   "dependencies": {
     "@anderjason/color": "^2.0.0",
     "@anderjason/geometry": "^3.0.0",
-    "@anderjason/koji-frontend-tools": "^4.0.2",
+    "@anderjason/koji-frontend-tools": "^4.1.0",
     "@anderjason/money": "^1.0.0",
     "@anderjason/observable": "^3.2.0",
     "@anderjason/tests": "^1.0.1",
@@ -46,6 +46,10 @@
     "webpack": "4.44.2",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
   },
   "bugs": {
     "url": "https://github.com/anderjason/koji-react-frontend-tools/issues"

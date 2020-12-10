@@ -58,7 +58,7 @@ export class KojiReactConfig extends React.Component<
 
     KojiTools.instance.vccData.update(valuePath, value);
   };
-
+  
   render() {
     const output = this.props.render({
       sessionMode: KojiTools.instance.sessionMode.value,
