@@ -9,14 +9,20 @@ class MoneyInput extends React.Component {
     constructor() {
         super(...arguments);
         this._ref = React.createRef();
+        this._isInvalid = observable_1.Observable.ofEmpty(observable_1.Observable.isStrictEqual);
+    }
+    componentDidUpdate() {
+        this._isInvalid.setValue(this.props.isInvalid || false);
     }
     componentDidMount() {
+        this._isInvalid.setValue(this.props.isInvalid || false);
         const value = observable_1.Observable.givenValue(this.props.defaultValue, money_1.Money.isEqual);
         this._actor = new koji_frontend_tools_1.MoneyInput({
             parentElement: this._ref.current,
             value,
             persistentLabel: this.props.persistentLabel,
             maxValue: this.props.maxValue,
+            isInvalid: this._isInvalid
         });
         this._actor.activate();
         this._actor.cancelOnDeactivate(value.didChange.subscribe((money) => {

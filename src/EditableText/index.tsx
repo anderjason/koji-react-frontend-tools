@@ -11,6 +11,7 @@ export interface EditableTextProps {
   placeholderLabel: string;
 
   defaultValue?: string;
+  maxLength?: number;
   theme?: KojiTheme;
 }
 
@@ -18,18 +19,21 @@ export class EditableText extends React.Component<EditableTextProps, any> {
   private _ref = React.createRef<HTMLDivElement>();
   private _actor: Actor;
   private _theme = Observable.ofEmpty<KojiTheme>(Observable.isStrictEqual);
+  private _maxLength = Observable.ofEmpty<number>(Observable.isStrictEqual);
 
   componentDidUpdate() {
     this._theme.setValue(this.props.theme);
+    this._maxLength.setValue(this.props.maxLength);
   }
 
   componentDidMount() {
+    this._theme.setValue(this.props.theme);
+    this._maxLength.setValue(this.props.maxLength);
+
     const value = Observable.givenValue(
       this.props.defaultValue,
       Observable.isStrictEqual
     );
-
-    this._theme.setValue(this.props.theme);
 
     this._actor = new EditableTextActor({
       parentElement: this._ref.current,
@@ -37,6 +41,7 @@ export class EditableText extends React.Component<EditableTextProps, any> {
       displayType: this.props.displayType,
       placeholderLabel: this.props.placeholderLabel,
       theme: this._theme,
+      maxLength: this._maxLength
     });
     this._actor.activate();
 

@@ -11,13 +11,21 @@ export interface MoneyInputProps {
   placeholderLabel?: string;
   persistentLabel?: string;
   maxValue?: Money;
+  isInvalid?: boolean;
 }
 
 export class MoneyInput extends React.Component<MoneyInputProps, any> {
   private _ref = React.createRef<HTMLDivElement>();
   private _actor: Actor;
+  private _isInvalid = Observable.ofEmpty<boolean>(Observable.isStrictEqual);
+
+  componentDidUpdate() {
+    this._isInvalid.setValue(this.props.isInvalid || false);
+  }
 
   componentDidMount() {
+    this._isInvalid.setValue(this.props.isInvalid || false);
+
     const value = Observable.givenValue<Money>(
       this.props.defaultValue,
       Money.isEqual
@@ -28,6 +36,7 @@ export class MoneyInput extends React.Component<MoneyInputProps, any> {
       value,
       persistentLabel: this.props.persistentLabel,
       maxValue: this.props.maxValue,
+      isInvalid: this._isInvalid
     });
 
     this._actor.activate();

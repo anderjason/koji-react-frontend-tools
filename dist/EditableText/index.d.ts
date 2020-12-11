@@ -6,12 +6,14 @@ export interface EditableTextProps {
     displayType: DisplayTextType;
     placeholderLabel: string;
     defaultValue?: string;
+    maxLength?: number;
     theme?: KojiTheme;
 }
 export declare class EditableText extends React.Component<EditableTextProps, any> {
     private _ref;
     private _actor;
     private _theme;
+    private _maxLength;
     componentDidUpdate(): void;
     componentDidMount(): void;
     componentWillUnmount(): void;

@@ -9,13 +9,21 @@ export interface IntegerInputProps {
   defaultValue?: number;
   placeholderLabel?: string;
   persistentLabel?: string;
+  isInvalid?: boolean;
 }
 
 export class IntegerInput extends React.Component<IntegerInputProps, any> {
   private _ref = React.createRef<HTMLDivElement>();
   private _actor: Actor;
+  private _isInvalid = Observable.ofEmpty<boolean>(Observable.isStrictEqual);
+
+  componentDidUpdate() {
+    this._isInvalid.setValue(this.props.isInvalid || false);
+  }
 
   componentDidMount() {
+    this._isInvalid.setValue(this.props.isInvalid || false);
+
     const value = Observable.givenValue(
       this.props.defaultValue,
       Observable.isStrictEqual
@@ -26,6 +34,7 @@ export class IntegerInput extends React.Component<IntegerInputProps, any> {
       value,
       placeholder: this.props.placeholderLabel,
       persistentLabel: this.props.persistentLabel,
+      isInvalid: this._isInvalid
     });
 
     this._actor.activate();

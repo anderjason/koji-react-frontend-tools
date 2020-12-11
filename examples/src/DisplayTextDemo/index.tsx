@@ -1,11 +1,9 @@
-import { KojiAppearance } from "@anderjason/koji-frontend-tools";
 import * as React from "react";
 import {
   AlignBottom,
   Card,
   DisplayText,
   SubmitButton,
-  ThemeToolbar,
 } from "../../../src";
 import { ReactDemoComponentProps } from "../_internal/ReactDemoContainer";
 
@@ -15,56 +13,33 @@ export class DisplayTextDemo extends React.Component<
   ReactDemoComponentProps,
   any
 > {
-  state = {
-    theme: KojiAppearance.themes.get("kojiBlack"),
-  };
-
   render() {
-    const { theme } = this.state;
-
     // display example code in the sidebar
     this.props.demoActor.exampleCode.setValue({
       language: "jsx",
       code: `
-import { KojiAppearance } from "@anderjason/koji-frontend-tools";
-
 // const demoText = "Lorem ipsum dolor sit...
 
 class Demo extends React.Component {
-  state = {
-    theme: KojiAppearance.themes.get("kojiBlack"),
-  };
-
   render() {
-    const { theme } = this.state;
-
     return (
-      <React.Fragment>
-        <ThemeToolbar
-          defaultValue={this.state.theme}
-          onChange={(theme) => this.setState({ theme })}
-        />
-
-        <AlignBottom isRemixing={false}>
-          <Card>
-            <DisplayText
-              displayType="title"
-              text="Something is for sale"
-              theme={theme}
-            />
-            <DisplayText
-              displayType="description"
-              text={demoText}
-            />
-            <SubmitButton
-              text="Action"
-              mode="ready"
-              theme={theme}
-              onClick={() => {}}
-            />
-          </Card>
-        </AlignBottom>
-      </React.Fragment>
+      <AlignBottom isRemixing={false}>
+        <Card>
+          <DisplayText
+            displayType="title"
+            text="Something is for sale"
+          />
+          <DisplayText
+            displayType="description"
+            text={demoText}
+          />
+          <SubmitButton
+            text="Action"
+            mode="ready"
+            onClick={() => {}}
+          />
+        </Card>
+      </AlignBottom>
     );
   }
 }
@@ -72,29 +47,20 @@ class Demo extends React.Component {
     });
 
     return (
-      <>
-        <ThemeToolbar
-          defaultValue={this.state.theme}
-          onChange={(theme) => this.setState({ theme })}
-        />
-
-        <AlignBottom isRemixing={false}>
-          <Card>
-            <DisplayText
-              displayType="title"
-              text="Something is for sale"
-              theme={theme}
-            />
-            <DisplayText displayType="description" text={demoText} />
-            <SubmitButton
-              text="Action"
-              mode="ready"
-              theme={theme}
-              onClick={() => {}}
-            />
-          </Card>
-        </AlignBottom>
-      </>
+      <AlignBottom isRemixing={false}>
+        <Card>
+          <DisplayText
+            displayType="title"
+            text="Something is for sale"
+          />
+          <DisplayText displayType="description" text={demoText} />
+          <SubmitButton
+            text="Action"
+            mode="ready"
+            onClick={() => {}}
+          />
+        </Card>
+      </AlignBottom>
     );
   }
 }

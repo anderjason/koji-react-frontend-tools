@@ -6,10 +6,13 @@ export interface MoneyInputProps {
     placeholderLabel?: string;
     persistentLabel?: string;
     maxValue?: Money;
+    isInvalid?: boolean;
 }
 export declare class MoneyInput extends React.Component<MoneyInputProps, any> {
     private _ref;
     private _actor;
+    private _isInvalid;
+    componentDidUpdate(): void;
     componentDidMount(): void;
     componentWillUnmount(): void;
     render(): JSX.Element;

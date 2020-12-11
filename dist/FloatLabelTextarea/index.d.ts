@@ -2,15 +2,16 @@ import * as React from "react";
 export interface FloatLabelTextareaProps {
     onChange: (value: string) => void;
     defaultValue?: string;
-    placeholderLabel?: string;
-    persistentLabel?: string;
-    maxLength?: number;
     isInvalid?: boolean;
+    maxLength?: number;
+    persistentLabel?: string;
+    placeholderLabel?: string;
 }
 export declare class FloatLabelTextarea extends React.Component<FloatLabelTextareaProps, any> {
     private _ref;
     private _actor;
     private _isInvalid;
+    private _maxLength;
     componentDidUpdate(): void;
     componentDidMount(): void;
     componentWillUnmount(): void;

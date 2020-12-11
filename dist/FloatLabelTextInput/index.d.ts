@@ -11,6 +11,7 @@ export declare class FloatLabelTextInput extends React.Component<FloatLabelTextI
     private _ref;
     private _actor;
     private _isInvalid;
+    private _maxLength;
     componentDidUpdate(): void;
     componentDidMount(): void;
     componentWillUnmount(): void;

@@ -9,6 +9,7 @@ export interface SubmitButtonProps {
   text: string;
   mode: SubmitButtonMode;
   onClick: () => void;
+  
   theme?: KojiTheme;
 }
 
