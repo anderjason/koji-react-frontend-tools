@@ -8,8 +8,13 @@ class FloatLabelTextarea extends React.Component {
     constructor() {
         super(...arguments);
         this._ref = React.createRef();
+        this._isInvalid = observable_1.Observable.ofEmpty(observable_1.Observable.isStrictEqual);
+    }
+    componentDidUpdate() {
+        this._isInvalid.setValue(this.props.isInvalid || false);
     }
     componentDidMount() {
+        this._isInvalid.setValue(this.props.isInvalid || false);
         const value = observable_1.Observable.givenValue(this.props.defaultValue, observable_1.Observable.isStrictEqual);
         this._actor = new koji_frontend_tools_1.FloatLabelTextarea({
             parentElement: this._ref.current,
@@ -18,7 +23,8 @@ class FloatLabelTextarea extends React.Component {
             valueGivenDisplayText: (v) => v,
             placeholder: this.props.placeholderLabel,
             persistentLabel: this.props.persistentLabel,
-            maxLength: this.props.maxLength
+            maxLength: this.props.maxLength,
+            isInvalid: this._isInvalid
         });
         this._actor.activate();
         this._actor.cancelOnDeactivate(value.didChange.subscribe((text) => {

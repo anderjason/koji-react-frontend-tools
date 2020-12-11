@@ -5,10 +5,13 @@ export interface FloatLabelTextInputProps {
     placeholderLabel?: string;
     persistentLabel?: string;
     maxLength?: number;
+    isInvalid?: boolean;
 }
 export declare class FloatLabelTextInput extends React.Component<FloatLabelTextInputProps, any> {
     private _ref;
     private _actor;
+    private _isInvalid;
+    componentDidUpdate(): void;
     componentDidMount(): void;
     componentWillUnmount(): void;
     render(): JSX.Element;

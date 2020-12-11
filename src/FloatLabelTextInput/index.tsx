@@ -10,6 +10,7 @@ export interface FloatLabelTextInputProps {
   placeholderLabel?: string;
   persistentLabel?: string;
   maxLength?: number;
+  isInvalid?: boolean;
 }
 
 export class FloatLabelTextInput extends React.Component<
@@ -18,8 +19,15 @@ export class FloatLabelTextInput extends React.Component<
 > {
   private _ref = React.createRef<HTMLDivElement>();
   private _actor: Actor;
+  private _isInvalid = Observable.ofEmpty<boolean>(Observable.isStrictEqual);
+
+  componentDidUpdate() {
+    this._isInvalid.setValue(this.props.isInvalid || false);
+  }
 
   componentDidMount() {
+    this._isInvalid.setValue(this.props.isInvalid || false);
+
     const value = Observable.givenValue(
       this.props.defaultValue,
       Observable.isStrictEqual
@@ -32,7 +40,8 @@ export class FloatLabelTextInput extends React.Component<
       valueGivenDisplayText: (v) => v,
       placeholder: this.props.placeholderLabel,
       persistentLabel: this.props.persistentLabel,
-      maxLength: this.props.maxLength
+      maxLength: this.props.maxLength,
+      isInvalid: this._isInvalid
     });
 
     this._actor.activate();
