@@ -10,14 +10,17 @@ class EditableText extends React.Component {
         this._ref = React.createRef();
         this._theme = observable_1.Observable.ofEmpty(observable_1.Observable.isStrictEqual);
         this._maxLength = observable_1.Observable.ofEmpty(observable_1.Observable.isStrictEqual);
+        this._isInvalid = observable_1.Observable.ofEmpty(observable_1.Observable.isStrictEqual);
     }
     componentDidUpdate() {
         this._theme.setValue(this.props.theme);
         this._maxLength.setValue(this.props.maxLength);
+        this._isInvalid.setValue(this.props.isInvalid);
     }
     componentDidMount() {
         this._theme.setValue(this.props.theme);
         this._maxLength.setValue(this.props.maxLength);
+        this._isInvalid.setValue(this.props.isInvalid);
         const value = observable_1.Observable.givenValue(this.props.defaultValue, observable_1.Observable.isStrictEqual);
         this._actor = new koji_frontend_tools_1.EditableText({
             parentElement: this._ref.current,
@@ -25,7 +28,8 @@ class EditableText extends React.Component {
             displayType: this.props.displayType,
             placeholderLabel: this.props.placeholderLabel,
             theme: this._theme,
-            maxLength: this._maxLength
+            maxLength: this._maxLength,
+            isInvalid: this._isInvalid
         });
         this._actor.activate();
         this._actor.cancelOnDeactivate(value.didChange.subscribe(text => {

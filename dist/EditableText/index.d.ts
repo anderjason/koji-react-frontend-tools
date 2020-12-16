@@ -8,12 +8,14 @@ export interface EditableTextProps {
     defaultValue?: string;
     maxLength?: number;
     theme?: KojiTheme;
+    isInvalid?: boolean;
 }
 export declare class EditableText extends React.Component<EditableTextProps, any> {
     private _ref;
     private _actor;
     private _theme;
     private _maxLength;
+    private _isInvalid;
     componentDidUpdate(): void;
     componentDidMount(): void;
     componentWillUnmount(): void;

@@ -13,6 +13,7 @@ export interface EditableTextProps {
   defaultValue?: string;
   maxLength?: number;
   theme?: KojiTheme;
+  isInvalid?: boolean;
 }
 
 export class EditableText extends React.Component<EditableTextProps, any> {
@@ -20,15 +21,18 @@ export class EditableText extends React.Component<EditableTextProps, any> {
   private _actor: Actor;
   private _theme = Observable.ofEmpty<KojiTheme>(Observable.isStrictEqual);
   private _maxLength = Observable.ofEmpty<number>(Observable.isStrictEqual);
+  private _isInvalid = Observable.ofEmpty<boolean>(Observable.isStrictEqual);
 
   componentDidUpdate() {
     this._theme.setValue(this.props.theme);
     this._maxLength.setValue(this.props.maxLength);
+    this._isInvalid.setValue(this.props.isInvalid);
   }
 
   componentDidMount() {
     this._theme.setValue(this.props.theme);
     this._maxLength.setValue(this.props.maxLength);
+    this._isInvalid.setValue(this.props.isInvalid);
 
     const value = Observable.givenValue(
       this.props.defaultValue,
@@ -41,7 +45,8 @@ export class EditableText extends React.Component<EditableTextProps, any> {
       displayType: this.props.displayType,
       placeholderLabel: this.props.placeholderLabel,
       theme: this._theme,
-      maxLength: this._maxLength
+      maxLength: this._maxLength,
+      isInvalid: this._isInvalid
     });
     this._actor.activate();
 
