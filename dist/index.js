@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ThemeToolbar = exports.SubmitButton = exports.ReactBridge = exports.MoneyInput = exports.LoadingIndicator = exports.KojiReactConfig = exports.IntegerInput = exports.FloatLabelTextInput = exports.FloatLabelTextarea = exports.EditableText = exports.DisplayText = exports.Card = exports.AlignBottom = void 0;
+exports.ThemeToolbar = exports.SubmitButton = exports.ReactBridge = exports.PublishButton = exports.MoneyInput = exports.LoadingIndicator = exports.KojiReactConfig = exports.IntegerInput = exports.FloatLabelTextInput = exports.FloatLabelTextarea = exports.EditableText = exports.DisplayText = exports.Card = exports.AlignBottom = void 0;
 const AlignBottom_1 = require("./AlignBottom");
 Object.defineProperty(exports, "AlignBottom", { enumerable: true, get: function () { return AlignBottom_1.AlignBottom; } });
 const Card_1 = require("./Card");
@@ -21,6 +21,8 @@ const LoadingIndicator_1 = require("./LoadingIndicator");
 Object.defineProperty(exports, "LoadingIndicator", { enumerable: true, get: function () { return LoadingIndicator_1.LoadingIndicator; } });
 const MoneyInput_1 = require("./MoneyInput");
 Object.defineProperty(exports, "MoneyInput", { enumerable: true, get: function () { return MoneyInput_1.MoneyInput; } });
+const PublishButton_1 = require("./PublishButton");
+Object.defineProperty(exports, "PublishButton", { enumerable: true, get: function () { return PublishButton_1.PublishButton; } });
 const ReactBridge_1 = require("./ReactBridge");
 Object.defineProperty(exports, "ReactBridge", { enumerable: true, get: function () { return ReactBridge_1.ReactBridge; } });
 const SubmitButton_1 = require("./SubmitButton");

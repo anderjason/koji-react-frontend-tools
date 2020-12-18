@@ -30,6 +30,18 @@ class FloatLabelTextInput extends React.Component {
             isInvalid: this._isInvalid
         });
         this._actor.activate();
+        this._actor.cancelOnDeactivate(this._actor.isFocused.didChange.subscribe(isFocused => {
+            if (isFocused == true) {
+                if (this.props.onFocus != null) {
+                    this.props.onFocus();
+                }
+            }
+            else if (isFocused == false) {
+                if (this.props.onBlur != null) {
+                    this.props.onBlur();
+                }
+            }
+        }));
         this._actor.cancelOnDeactivate(value.didChange.subscribe((text) => {
             try {
                 if (this.props.onChange != null) {

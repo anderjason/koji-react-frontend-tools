@@ -9,6 +9,8 @@ export interface EditableTextProps {
     maxLength?: number;
     theme?: KojiTheme;
     isInvalid?: boolean;
+    onFocus?: () => void;
+    onBlur?: () => void;
 }
 export declare class EditableText extends React.Component<EditableTextProps, any> {
     private _ref;

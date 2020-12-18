@@ -5,6 +5,7 @@ const React = require("react");
 const koji_frontend_tools_1 = require("@anderjason/koji-frontend-tools");
 const observable_1 = require("@anderjason/observable");
 const BooleanUtil_1 = require("@anderjason/util/dist/BooleanUtil");
+const ReactDOM = require("react-dom");
 class AlignBottom extends React.Component {
     constructor() {
         super(...arguments);
@@ -13,6 +14,7 @@ class AlignBottom extends React.Component {
     }
     componentDidUpdate() {
         this._isRemixing.setValue(BooleanUtil_1.BooleanUtil.booleanGivenBooleanLike(this.props.isRemixing || false));
+        ReactDOM.render(React.createElement(React.Fragment, null, this.props.children), this._actor.element);
     }
     componentDidMount() {
         this._isRemixing.setValue(BooleanUtil_1.BooleanUtil.booleanGivenBooleanLike(this.props.isRemixing || false));
@@ -24,6 +26,7 @@ class AlignBottom extends React.Component {
             isRemixing: this._isRemixing,
         });
         this._actor.activate();
+        ReactDOM.render(React.createElement(React.Fragment, null, this.props.children), this._actor.element);
     }
     componentWillUnmount() {
         if (this._actor != null) {
@@ -32,7 +35,7 @@ class AlignBottom extends React.Component {
         }
     }
     render() {
-        return React.createElement("div", { ref: this._ref }, this.props.children);
+        return React.createElement("div", { className: "alignbottom", ref: this._ref });
     }
 }
 exports.AlignBottom = AlignBottom;

@@ -6,6 +6,8 @@ export interface FloatLabelTextInputProps {
     persistentLabel?: string;
     maxLength?: number;
     isInvalid?: boolean;
+    onFocus?: () => void;
+    onBlur?: () => void;
 }
 export declare class FloatLabelTextInput extends React.Component<FloatLabelTextInputProps, any> {
     private _ref;

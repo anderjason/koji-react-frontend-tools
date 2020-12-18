@@ -7,6 +7,8 @@ export interface MoneyInputProps {
     persistentLabel?: string;
     maxValue?: Money;
     isInvalid?: boolean;
+    onFocus?: () => void;
+    onBlur?: () => void;
 }
 export declare class MoneyInput extends React.Component<MoneyInputProps, any> {
     private _ref;

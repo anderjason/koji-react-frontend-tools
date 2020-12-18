@@ -6,6 +6,8 @@ export interface FloatLabelTextareaProps {
     maxLength?: number;
     persistentLabel?: string;
     placeholderLabel?: string;
+    onFocus?: () => void;
+    onBlur?: () => void;
 }
 export declare class FloatLabelTextarea extends React.Component<FloatLabelTextareaProps, any> {
     private _ref;

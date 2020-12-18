@@ -5,6 +5,8 @@ export interface IntegerInputProps {
     placeholderLabel?: string;
     persistentLabel?: string;
     isInvalid?: boolean;
+    onFocus?: () => void;
+    onBlur?: () => void;
 }
 export declare class IntegerInput extends React.Component<IntegerInputProps, any> {
     private _ref;
