@@ -3,6 +3,7 @@ import { Actor } from "skytree";
 import { AlignBottom as AlignBottomActor } from "@anderjason/koji-frontend-tools";
 import { Observable } from "@anderjason/observable";
 import { BooleanUtil } from "@anderjason/util/dist/BooleanUtil";
+import ReactDOM = require("react-dom");
 
 export interface AlignBottomProps {
   isRemixing: boolean;
@@ -10,11 +11,16 @@ export interface AlignBottomProps {
 
 export class AlignBottom extends React.Component<AlignBottomProps, any> {
   private _ref = React.createRef<HTMLDivElement>();
-  private _actor: Actor;
+  private _actor: AlignBottomActor;
   private _isRemixing = Observable.ofEmpty<boolean>(Observable.isStrictEqual);
 
   componentDidUpdate() {
     this._isRemixing.setValue(BooleanUtil.booleanGivenBooleanLike(this.props.isRemixing || false));
+
+    ReactDOM.render(
+      <React.Fragment>{this.props.children}</React.Fragment>,
+      this._actor.element
+    );
   }
 
   componentDidMount() {
@@ -28,6 +34,11 @@ export class AlignBottom extends React.Component<AlignBottomProps, any> {
       isRemixing: this._isRemixing,
     });
     this._actor.activate();
+
+    ReactDOM.render(
+      <React.Fragment>{this.props.children}</React.Fragment>,
+      this._actor.element
+    );
   }
 
   componentWillUnmount() {
@@ -38,6 +49,6 @@ export class AlignBottom extends React.Component<AlignBottomProps, any> {
   }
 
   render() {
-    return <div ref={this._ref}>{this.props.children}</div>;
+    return <div className="alignbottom" ref={this._ref} />;
   }
 }

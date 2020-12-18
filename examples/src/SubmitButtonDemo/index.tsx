@@ -32,9 +32,15 @@ export class SubmitButtonDemo extends React.Component<
 
     setTimeout(() => {
       this.setState({
-        buttonMode: "ready",
+        buttonMode: "disabled",
       });
     }, 3000);
+
+    setTimeout(() => {
+      this.setState({
+        buttonMode: "ready",
+      });
+    }, 4000);
   }
 
   render() {

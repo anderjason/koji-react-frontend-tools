@@ -6,11 +6,11 @@ import { AlignBottomDemo } from "./AlignBottomDemo";
 import { FloatLabelTextInputDemo } from "./FloatLabelTextInputDemo";
 import { IntegerInputDemo } from "./IntegerInputDemo";
 import { MoneyInputDemo } from "./MoneyInputDemo";
-import { ThemeToolbarDemo } from "./ThemeToolbarDemo";
 import { LoadingIndicatorDemo } from "./LoadingIndicatorDemo";
 import { DisplayTextDemo } from "./DisplayTextDemo";
 import { EditableTextDemo } from "./EditableTextDemo";
 import { FloatLabelTextareaDemo } from "./FloatLabelTextareaDemo";
+import { PublishButtonDemo } from "./PublishButtonDemo";
 
 const definitions = ObservableArray.givenValues<ExampleDefinition>([
   {
@@ -62,15 +62,15 @@ const definitions = ObservableArray.givenValues<ExampleDefinition>([
     }),
   },
   {
-    title: "Submit button",
+    title: "Publish button",
     actor: new ReactDemoContainer({
-      component: SubmitButtonDemo,
+      component: PublishButtonDemo,
     }),
   },
   {
-    title: "Theme toolbar",
+    title: "Submit button",
     actor: new ReactDemoContainer({
-      component: ThemeToolbarDemo,
+      component: SubmitButtonDemo,
     }),
   },
 ]);

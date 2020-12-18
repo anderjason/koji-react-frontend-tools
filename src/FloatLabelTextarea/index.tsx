@@ -11,6 +11,8 @@ export interface FloatLabelTextareaProps {
   maxLength?: number;
   persistentLabel?: string;
   placeholderLabel?: string;
+  onFocus?: () => void;
+  onBlur?: () => void;
 }
 
 export class FloatLabelTextarea extends React.Component<
@@ -18,7 +20,7 @@ export class FloatLabelTextarea extends React.Component<
   any
 > {
   private _ref = React.createRef<HTMLDivElement>();
-  private _actor: Actor;
+  private _actor: FloatLabelTextareaActor<string>;
   private _isInvalid = Observable.ofEmpty<boolean>(Observable.isStrictEqual);
   private _maxLength = Observable.ofEmpty<number>(Observable.isStrictEqual);
 
@@ -48,6 +50,20 @@ export class FloatLabelTextarea extends React.Component<
     });
 
     this._actor.activate();
+
+    this._actor.cancelOnDeactivate(
+      this._actor.isFocused.didChange.subscribe(isFocused => {
+        if (isFocused == true) {
+          if (this.props.onFocus != null) {
+            this.props.onFocus();
+          }
+        } else if (isFocused == false) {
+          if (this.props.onBlur != null) {
+            this.props.onBlur();
+          }
+        }
+      })
+    );
 
     this._actor.cancelOnDeactivate(
       value.didChange.subscribe((text) => {

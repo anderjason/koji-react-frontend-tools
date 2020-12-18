@@ -3,7 +3,6 @@ import { DisplayTextType } from "@anderjason/koji-frontend-tools/dist/DisplayTex
 import { KojiTheme } from "@anderjason/koji-frontend-tools/dist/KojiAppearance";
 import { Observable } from "@anderjason/observable";
 import * as React from "react";
-import { Actor } from "skytree";
 
 export interface EditableTextProps {
   onChange: (value: string) => void;
@@ -14,11 +13,13 @@ export interface EditableTextProps {
   maxLength?: number;
   theme?: KojiTheme;
   isInvalid?: boolean;
+  onFocus?: () => void;
+  onBlur?: () => void;
 }
 
 export class EditableText extends React.Component<EditableTextProps, any> {
   private _ref = React.createRef<HTMLDivElement>();
-  private _actor: Actor;
+  private _actor: EditableTextActor;
   private _theme = Observable.ofEmpty<KojiTheme>(Observable.isStrictEqual);
   private _maxLength = Observable.ofEmpty<number>(Observable.isStrictEqual);
   private _isInvalid = Observable.ofEmpty<boolean>(Observable.isStrictEqual);
@@ -49,6 +50,20 @@ export class EditableText extends React.Component<EditableTextProps, any> {
       isInvalid: this._isInvalid
     });
     this._actor.activate();
+
+    this._actor.cancelOnDeactivate(
+      this._actor.isFocused.didChange.subscribe(isFocused => {
+        if (isFocused == true) {
+          if (this.props.onFocus != null) {
+            this.props.onFocus();
+          }
+        } else if (isFocused == false) {
+          if (this.props.onBlur != null) {
+            this.props.onBlur();
+          }
+        }
+      })
+    );
 
     this._actor.cancelOnDeactivate(
       value.didChange.subscribe(text => {

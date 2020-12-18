@@ -1,5 +1,4 @@
 import * as React from "react";
-import { Actor } from "skytree";
 import { IntegerInput as IntegerInputActor } from "@anderjason/koji-frontend-tools";
 import { Observable } from "@anderjason/observable";
 
@@ -10,11 +9,13 @@ export interface IntegerInputProps {
   placeholderLabel?: string;
   persistentLabel?: string;
   isInvalid?: boolean;
+  onFocus?: () => void;
+  onBlur?: () => void;
 }
 
 export class IntegerInput extends React.Component<IntegerInputProps, any> {
   private _ref = React.createRef<HTMLDivElement>();
-  private _actor: Actor;
+  private _actor: IntegerInputActor;
   private _isInvalid = Observable.ofEmpty<boolean>(Observable.isStrictEqual);
 
   componentDidUpdate() {
@@ -38,6 +39,20 @@ export class IntegerInput extends React.Component<IntegerInputProps, any> {
     });
 
     this._actor.activate();
+
+    this._actor.cancelOnDeactivate(
+      this._actor.isFocused.didChange.subscribe(isFocused => {
+        if (isFocused == true) {
+          if (this.props.onFocus != null) {
+            this.props.onFocus();
+          }
+        } else if (isFocused == false) {
+          if (this.props.onBlur != null) {
+            this.props.onBlur();
+          }
+        }
+      })
+    );
 
     this._actor.cancelOnDeactivate(
       value.didChange.subscribe((n) => {

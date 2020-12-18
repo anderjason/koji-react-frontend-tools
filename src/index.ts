@@ -8,6 +8,7 @@ import { IntegerInput } from "./IntegerInput";
 import { KojiReactConfig } from "./KojiReactConfig";
 import { LoadingIndicator } from "./LoadingIndicator";
 import { MoneyInput } from "./MoneyInput";
+import { PublishButton } from "./PublishButton";
 import { ReactBridge } from "./ReactBridge";
 import { SubmitButton } from "./SubmitButton";
 import { ThemeToolbar } from "./ThemeToolbar";
@@ -23,6 +24,7 @@ export {
   KojiReactConfig,
   LoadingIndicator,
   MoneyInput,
+  PublishButton,
   ReactBridge,
   SubmitButton,
   ThemeToolbar,
