@@ -4,7 +4,7 @@ import * as React from "react";
 import { AlignBottom, Card, DisplayText, MoneyInput } from "../../../src";
 import { ReactDemoComponentProps } from "../_internal/ReactDemoContainer";
 
-const maxPrice = new Money(10000, Currency.ofUSD());
+const maxPrice = new Money(100000, Currency.ofUSD());
 
 export class MoneyInputDemo extends React.Component<
   ReactDemoComponentProps,
@@ -23,7 +23,7 @@ export class MoneyInputDemo extends React.Component<
       code: `
 import { Money, Currency } from "@anderjason/money";
 
-const maxPrice = new Money(10000, Currency.ofUSD());
+const maxPrice = new Money(100000, Currency.ofUSD());
 
 class Demo extends React.Component {
   state = {
@@ -33,14 +33,16 @@ class Demo extends React.Component {
   render() {
     const { price } = this.state;
 
-    const formattedPrice = price.toString("$1.00");
+    const formattedPrice = price != null ? 
+      \`The price is \${price.toString("$1.00")}\` : 
+      "Price is not set";
 
     return (
       <AlignBottom isRemixing={false}>
         <Card>
           <DisplayText
             displayType="description"
-            text={\`The price is \${formattedPrice}\`}
+            text={formattedPrice}
           />
 
           <MoneyInput
@@ -49,6 +51,7 @@ class Demo extends React.Component {
             defaultValue={price}
             maxValue={maxPrice}
             onChange={price => this.setState({ price })}
+            allowEmpty={true}
           />
         </Card>
       </AlignBottom>
@@ -58,14 +61,16 @@ class Demo extends React.Component {
       `,
     });
 
+    const formattedPrice = price != null ? 
+      `The price is ${price.toString("$1.00")}` : 
+      "Price is not set";
+
     return (
       <AlignBottom isRemixing={false}>
         <Card>
           <DisplayText
             displayType="description"
-            text={`The price is ${price.toString(
-              "$1.00"
-            )} (demo max is $99.99)`}
+            text={formattedPrice}
           />
 
           <MoneyInput
@@ -73,6 +78,7 @@ class Demo extends React.Component {
             defaultValue={price}
             maxValue={maxPrice}
             onChange={(price) => this.setState({ price })}
+            allowEmpty={true}
           />
         </Card>
       </AlignBottom>

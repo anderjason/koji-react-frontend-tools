@@ -6,6 +6,7 @@ import { Money } from "@anderjason/money";
 export interface MoneyInputProps {
   onChange: (value: Money) => void;
 
+  allowEmpty?: boolean;
   defaultValue?: Money;
   placeholderLabel?: string;
   persistentLabel?: string;
@@ -37,7 +38,8 @@ export class MoneyInput extends React.Component<MoneyInputProps, any> {
       value,
       persistentLabel: this.props.persistentLabel,
       maxValue: this.props.maxValue,
-      isInvalid: this._isInvalid
+      isInvalid: this._isInvalid,
+      allowEmpty: this.props.allowEmpty || false
     });
 
     this._actor.activate();

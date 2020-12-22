@@ -2,6 +2,7 @@ import * as React from "react";
 import { Money } from "@anderjason/money";
 export interface MoneyInputProps {
     onChange: (value: Money) => void;
+    allowEmpty?: boolean;
     defaultValue?: Money;
     placeholderLabel?: string;
     persistentLabel?: string;

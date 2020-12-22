@@ -1,5 +1,4 @@
 import * as React from "react";
-import { Actor } from "skytree";
 import { FloatLabelTextarea as FloatLabelTextareaActor } from "@anderjason/koji-frontend-tools";
 import { Observable } from "@anderjason/observable";
 
@@ -9,10 +8,12 @@ export interface FloatLabelTextareaProps {
   defaultValue?: string;
   isInvalid?: boolean;
   maxLength?: number;
+  maxRows?: number;
+  minRows?: number;
+  onBlur?: () => void;
+  onFocus?: () => void;
   persistentLabel?: string;
   placeholderLabel?: string;
-  onFocus?: () => void;
-  onBlur?: () => void;
 }
 
 export class FloatLabelTextarea extends React.Component<
@@ -23,15 +24,21 @@ export class FloatLabelTextarea extends React.Component<
   private _actor: FloatLabelTextareaActor<string>;
   private _isInvalid = Observable.ofEmpty<boolean>(Observable.isStrictEqual);
   private _maxLength = Observable.ofEmpty<number>(Observable.isStrictEqual);
+  private _maxRows = Observable.ofEmpty<number>(Observable.isStrictEqual);
+  private _minRows = Observable.ofEmpty<number>(Observable.isStrictEqual);
 
   componentDidUpdate() {
     this._isInvalid.setValue(this.props.isInvalid || false);
     this._maxLength.setValue(this.props.maxLength);
+    this._maxRows.setValue(this.props.maxRows);
+    this._minRows.setValue(this.props.minRows);
   }
 
   componentDidMount() {
     this._isInvalid.setValue(this.props.isInvalid || false);
     this._maxLength.setValue(this.props.maxLength);
+    this._maxRows.setValue(this.props.maxRows);
+    this._minRows.setValue(this.props.minRows);
 
     const value = Observable.givenValue(
       this.props.defaultValue,
@@ -39,14 +46,16 @@ export class FloatLabelTextarea extends React.Component<
     );
 
     this._actor = new FloatLabelTextareaActor<string>({
-      parentElement: this._ref.current,
-      value,
       displayTextGivenValue: (v) => v,
-      valueGivenDisplayText: (v) => v,
-      placeholder: this.props.placeholderLabel,
-      persistentLabel: this.props.persistentLabel,
+      isInvalid: this._isInvalid,
       maxLength: this._maxLength,
-      isInvalid: this._isInvalid
+      maxRows: this._maxRows,
+      minRows: this._minRows,
+      parentElement: this._ref.current,
+      persistentLabel: this.props.persistentLabel,
+      placeholder: this.props.placeholderLabel,
+      value,
+      valueGivenDisplayText: (v) => v,
     });
 
     this._actor.activate();

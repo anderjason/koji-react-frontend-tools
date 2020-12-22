@@ -22,7 +22,8 @@ class MoneyInput extends React.Component {
             value,
             persistentLabel: this.props.persistentLabel,
             maxValue: this.props.maxValue,
-            isInvalid: this._isInvalid
+            isInvalid: this._isInvalid,
+            allowEmpty: this.props.allowEmpty || false
         });
         this._actor.activate();
         this._actor.cancelOnDeactivate(this._actor.isFocused.didChange.subscribe(isFocused => {

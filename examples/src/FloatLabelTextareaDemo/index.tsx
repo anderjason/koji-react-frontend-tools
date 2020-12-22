@@ -20,6 +20,8 @@ class Demo extends React.Component {
             placeholderLabel="Type a message"
             persistentLabel="Message"
             onChange={title => this.onChangeTitle(title)}
+            minRows={2}
+            maxRows={4}
           />
         </Card>
       </AlignBottom>
@@ -36,6 +38,8 @@ class Demo extends React.Component {
             placeholderLabel="Type a message"
             persistentLabel="Message"
             onChange={() => {}}
+            minRows={2}
+            maxRows={4}
           />
         </Card>
       </AlignBottom>
