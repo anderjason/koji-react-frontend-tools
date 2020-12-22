@@ -37,6 +37,7 @@ export class MoneyInput extends React.Component<MoneyInputProps, any> {
       parentElement: this._ref.current,
       value,
       persistentLabel: this.props.persistentLabel,
+      placeholderLabel: this.props.placeholderLabel,
       maxValue: this.props.maxValue,
       isInvalid: this._isInvalid,
       allowEmpty: this.props.allowEmpty || false

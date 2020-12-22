@@ -74,6 +74,7 @@ class Demo extends React.Component {
           />
 
           <MoneyInput
+            placeholderLabel="Price"
             persistentLabel="Set price"
             defaultValue={price}
             maxValue={maxPrice}
