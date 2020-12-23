@@ -11,7 +11,9 @@ class ReactBridge extends skytree_1.Actor {
             Object.keys(this.props.props).forEach((key) => {
                 const val = this.props.props[key];
                 if (observable_1.Observable.isObservable(val)) {
-                    this.cancelOnDeactivate(val.didChange.subscribe(this.render));
+                    this.cancelOnDeactivate(val.didChange.subscribe(() => {
+                        this.render();
+                    }));
                 }
             });
         }
