@@ -12,11 +12,15 @@ export interface KojiReactConfigProps {
 }
 export interface KojiReactConfigState {
     vccData: any;
+    sessionMode: KojiMode;
+    currentMode: KojiMode;
 }
 export declare class KojiReactConfig extends React.Component<KojiReactConfigProps, KojiReactConfigState> {
-    private _receipt;
+    private _actor;
     state: {
         vccData: unknown;
+        sessionMode: KojiMode;
+        currentMode: KojiMode;
     };
     componentDidMount(): void;
     componentWillUnmount(): void;
