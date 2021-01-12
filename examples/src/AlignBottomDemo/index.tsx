@@ -45,11 +45,13 @@ class Demo extends React.Component {
   render() {
     return (
       <AlignBottom isRemixing={${isRemixing}}>
-        <Card>
-          <div style={{ textAlign: "center" }}>
-            ${isRemixing ? "Remix mode" : "Normal mode"}
-          </div>
-        </Card>
+        <Card
+          renderContent={() => (
+            <div style={{ textAlign: "center" }}>
+              {isRemixing ? "Remix mode" : "Normal mode"}
+            </div>
+          )}
+        />
       </AlignBottom>
     );
   }
@@ -59,11 +61,13 @@ class Demo extends React.Component {
 
     return (
       <AlignBottom isRemixing={isRemixing}>
-        <Card>
-          <div style={{ textAlign: "center" }}>
-            {isRemixing ? "Remix mode" : "Normal mode"}
-          </div>
-        </Card>
+        <Card
+          renderContent={() => (
+            <div style={{ textAlign: "center" }}>
+              {isRemixing ? "Remix mode" : "Normal mode"}
+            </div>
+          )}
+        />
       </AlignBottom>
     );
   }

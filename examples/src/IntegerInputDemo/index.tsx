@@ -23,14 +23,16 @@ class Demo extends React.Component {
   render() {
     return (
       <AlignBottom isRemixing={false}>
-        <Card>
-          <IntegerInput
-            placeholderLabel="Quantity"
-            persistentLabel="Set quantity"
-            defaultValue={this.state.qty}
-            onChange={qty => this.setState({ qty })}
-          />
-        </Card>
+        <Card
+          renderContent={() => (
+            <IntegerInput
+              placeholderLabel="Quantity"
+              persistentLabel="Set quantity"
+              defaultValue={this.state.qty}
+              onChange={(qty) => this.setState({ qty })}
+            />
+          )}
+        />
       </AlignBottom>
     );
   }
@@ -40,14 +42,16 @@ class Demo extends React.Component {
 
     return (
       <AlignBottom isRemixing={false}>
-        <Card>
-          <IntegerInput
-            placeholderLabel="Quantity"
-            persistentLabel="Set quantity"
-            defaultValue={this.state.qty}
-            onChange={(qty) => this.setState({ qty })}
-          />
-        </Card>
+        <Card
+          renderContent={() => (
+            <IntegerInput
+              placeholderLabel="Quantity"
+              persistentLabel="Set quantity"
+              defaultValue={this.state.qty}
+              onChange={(qty) => this.setState({ qty })}
+            />
+          )}
+        />
       </AlignBottom>
     );
   }

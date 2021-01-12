@@ -82,14 +82,15 @@ class Demo extends React.Component {
 
     return (
       <AlignBottom isRemixing={false}>
-        <Card>
-          <SubmitButton
-            text="Unlock now"
-            mode="${buttonMode}"
-            theme={theme}
-            onClick={() => this.onClickUnlock()}
-          />
-        </Card>
+        <Card
+          renderFooterContent={() => (
+            <SubmitButton
+              text="Unlock now"
+              mode={buttonMode}
+              onClick={() => this.onClickUnlock()}
+            />
+          )}
+        />
       </AlignBottom>
     );
   }
@@ -99,13 +100,15 @@ class Demo extends React.Component {
 
     return (
       <AlignBottom isRemixing={false}>
-        <Card>
-          <SubmitButton
-            text="Unlock now"
-            mode={buttonMode}
-            onClick={() => this.onClickUnlock()}
-          />
-        </Card>
+        <Card
+          renderFooterContent={() => (
+            <SubmitButton
+              text="Unlock now"
+              mode={buttonMode}
+              onClick={() => this.onClickUnlock()}
+            />
+          )}
+        />
       </AlignBottom>
     );
   }

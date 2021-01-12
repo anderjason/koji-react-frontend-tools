@@ -7,7 +7,7 @@ export class CardHiddenDemo extends React.Component<
   any
 > {
   state = {
-    isVisible: false
+    isVisible: false,
   };
 
   render() {
@@ -60,42 +60,43 @@ class Demo extends React.Component {
     return (
       <AlignBottom isRemixing={false}>
         <Card
-          mode={ isVisible ? "visible" : "hidden" }
+          mode={isVisible ? "visible" : "hidden"}
           maxHeight={250}
-          hiddenContent={
+          renderHiddenContent={() => (
             <SubmitButton
               mode="ready"
               text="Show card"
               onClick={() => this.setState({ isVisible: true })}
             />
-          }
-          footerContent={
+          )}
+          renderFooterContent={() => (
             <SubmitButton
               mode="ready"
               text="Hide card"
               onClick={() => this.setState({ isVisible: false })}
             />
-          }
-        >
-          <div>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
-            <br />
-            <br />
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
-          </div>
-        </Card>
+          )}
+          renderContent={() => (
+            <div>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+              reprehenderit in voluptate velit esse cillum dolore eu fugiat
+              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+              sunt in culpa qui officia deserunt mollit anim id est laborum.
+              <br />
+              <br />
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+              reprehenderit in voluptate velit esse cillum dolore eu fugiat
+              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+              sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </div>
+          )}
+        />
       </AlignBottom>
     );
   }

@@ -6,27 +6,27 @@ import { Observable } from "@anderjason/observable";
 import { CardLayout } from "@anderjason/koji-frontend-tools/dist/Card/_internal/CardLayout";
 
 export interface CardPage {
-  content?: any;
-  footerContent?: any;
-  title?: string;
   anchorBottom?: boolean;
   onRemoved?: () => void;
+  renderContent?: () => any;
+  renderFooterContent?: () => any;
+  title?: string;
 }
 
 export interface CardProps {
   additionalPages?: CardPage[];
   anchorBottom?: boolean;
-  children?: any;
-  footerContent?: any;
-  hiddenContent?: any;
   maxHeight?: number;
   mode?: CardMode;
+  renderContent?: () => any;
+  renderFooterContent?: () => any;
+  renderHiddenContent?: () => any;
 }
 
 interface LayoutData {
+  anchorBottom: Observable<boolean>;
   layout: CardLayout;
   title: Observable<string>;
-  anchorBottom: Observable<boolean>;
 }
 
 export class Card extends React.Component<CardProps, any> {
@@ -38,14 +38,18 @@ export class Card extends React.Component<CardProps, any> {
 
   componentDidUpdate() {
     this._mode.setValue(this.props.mode);
-    this._anchorBottom.setValue(this.props.anchorBottom == null ? false : this.props.anchorBottom);
+    this._anchorBottom.setValue(
+      this.props.anchorBottom == null ? false : this.props.anchorBottom
+    );
 
     this.renderPages();
   }
 
   componentDidMount() {
     this._mode.setValue(this.props.mode);
-    this._anchorBottom.setValue(this.props.anchorBottom == null ? false : this.props.anchorBottom);
+    this._anchorBottom.setValue(
+      this.props.anchorBottom == null ? false : this.props.anchorBottom
+    );
 
     this._actor = new CardActor({
       target: {
@@ -61,22 +65,7 @@ export class Card extends React.Component<CardProps, any> {
     this._actor.cancelOnDeactivate(
       this._actor.selectedLayout.didChange.subscribe(() => {
         this.renderPages();
-      })
-    );
-
-    ReactDOM.render(
-      <React.Fragment>{this.props.children}</React.Fragment>,
-      this._actor.baseElement
-    );
-
-    ReactDOM.render(
-      <React.Fragment>{this.props.footerContent}</React.Fragment>,
-      this._actor.baseFooterElement
-    );
-
-    ReactDOM.render(
-      <React.Fragment>{this.props.hiddenContent}</React.Fragment>,
-      this._actor.hiddenElement
+      }, true)
     );
   }
 
@@ -103,7 +92,7 @@ export class Card extends React.Component<CardProps, any> {
         const layout = this._actor.addPage({
           title,
           anchorBottom,
-          onRemoved: requestedPage.onRemoved
+          onRemoved: requestedPage.onRemoved,
         });
 
         this._layoutDatas.push({
@@ -120,10 +109,42 @@ export class Card extends React.Component<CardProps, any> {
       }
     }
 
+    let content;
+    if (this.props.renderContent != null) {
+      content = this.props.renderContent();
+    } else {
+      content = null;
+    }
+
     ReactDOM.render(
-      <React.Fragment>{this.props.children}</React.Fragment>,
+      <React.Fragment>{content}</React.Fragment>,
       this._actor.baseElement
     );
+
+    let footerContent;
+    if (this.props.renderFooterContent != null) {
+      footerContent = this.props.renderFooterContent();
+    } else {
+      footerContent = null;
+    }
+
+    ReactDOM.render(
+      <React.Fragment>{footerContent}</React.Fragment>,
+      this._actor.baseFooterElement
+    );
+
+    let hiddenContent;
+    if (this.props.renderHiddenContent != null) {
+      hiddenContent = this.props.renderHiddenContent();
+    } else {
+      hiddenContent = null;
+    }
+
+    ReactDOM.render(
+      <React.Fragment>{hiddenContent}</React.Fragment>,
+      this._actor.hiddenElement
+    );
+
 
     this._layoutDatas.forEach((layoutData, idx) => {
       const additionalPage = requestedPages[idx];
@@ -131,17 +152,31 @@ export class Card extends React.Component<CardProps, any> {
       layoutData.title.setValue(additionalPage.title);
       layoutData.anchorBottom.setValue(additionalPage.anchorBottom || false);
 
+      let pageContent;
+      if (additionalPage.renderContent != null) {
+        pageContent = additionalPage.renderContent();
+      } else {
+        pageContent = null;
+      }
+
       ReactDOM.render(
-        <React.Fragment>{additionalPage.content}</React.Fragment>,
+        <React.Fragment>{pageContent}</React.Fragment>,
         layoutData.layout.element
       );
 
+      let pageFooterContent;
+      if (additionalPage.renderFooterContent != null) {
+        pageFooterContent = additionalPage.renderFooterContent();
+      } else {
+        pageFooterContent = null;
+      }
+
       ReactDOM.render(
-        <React.Fragment>{additionalPage.footerContent}</React.Fragment>,
+        <React.Fragment>{pageFooterContent}</React.Fragment>,
         layoutData.layout.footerElement
       );
     });
-  }
+  };
 
   render() {
     return <div ref={this._ref} />;

@@ -6,7 +6,7 @@ export interface FloatLabelTextareaProps {
   onChange: (value: string) => void;
 
   defaultValue?: string;
-  isInvalid?: boolean;
+  errorLabel?: string;
   maxLength?: number;
   maxRows?: number;
   minRows?: number;
@@ -14,6 +14,7 @@ export interface FloatLabelTextareaProps {
   onFocus?: () => void;
   persistentLabel?: string;
   placeholderLabel?: string;
+  supportLabel?: string;
 }
 
 export class FloatLabelTextarea extends React.Component<
@@ -22,23 +23,36 @@ export class FloatLabelTextarea extends React.Component<
 > {
   private _ref = React.createRef<HTMLDivElement>();
   private _actor: FloatLabelTextareaActor<string>;
-  private _isInvalid = Observable.ofEmpty<boolean>(Observable.isStrictEqual);
+  private _errorLabel = Observable.ofEmpty<string>(Observable.isStrictEqual);
   private _maxLength = Observable.ofEmpty<number>(Observable.isStrictEqual);
   private _maxRows = Observable.ofEmpty<number>(Observable.isStrictEqual);
   private _minRows = Observable.ofEmpty<number>(Observable.isStrictEqual);
+  private _persistentLabel = Observable.ofEmpty<string>(
+    Observable.isStrictEqual
+  );
+  private _placeholderLabel = Observable.ofEmpty<string>(
+    Observable.isStrictEqual
+  );
+  private _supportLabel = Observable.ofEmpty<string>(Observable.isStrictEqual);
 
   componentDidUpdate() {
-    this._isInvalid.setValue(this.props.isInvalid || false);
+    this._errorLabel.setValue(this.props.errorLabel);
     this._maxLength.setValue(this.props.maxLength);
     this._maxRows.setValue(this.props.maxRows);
     this._minRows.setValue(this.props.minRows);
+    this._persistentLabel.setValue(this.props.persistentLabel);
+    this._placeholderLabel.setValue(this.props.placeholderLabel);
+    this._supportLabel.setValue(this.props.supportLabel);
   }
 
   componentDidMount() {
-    this._isInvalid.setValue(this.props.isInvalid || false);
     this._maxLength.setValue(this.props.maxLength);
+    this._errorLabel.setValue(this.props.errorLabel);
     this._maxRows.setValue(this.props.maxRows);
     this._minRows.setValue(this.props.minRows);
+    this._persistentLabel.setValue(this.props.persistentLabel);
+    this._placeholderLabel.setValue(this.props.placeholderLabel);
+    this._supportLabel.setValue(this.props.supportLabel);
 
     const value = Observable.givenValue(
       this.props.defaultValue,
@@ -47,13 +61,14 @@ export class FloatLabelTextarea extends React.Component<
 
     this._actor = new FloatLabelTextareaActor<string>({
       displayTextGivenValue: (v) => v,
-      isInvalid: this._isInvalid,
+      errorLabel: this._errorLabel,
       maxLength: this._maxLength,
       maxRows: this._maxRows,
       minRows: this._minRows,
       parentElement: this._ref.current,
-      persistentLabel: this.props.persistentLabel,
-      placeholder: this.props.placeholderLabel,
+      persistentLabel: this._persistentLabel,
+      placeholderLabel: this._placeholderLabel,
+      supportLabel: this._supportLabel,
       value,
       valueGivenDisplayText: (v) => v,
     });
@@ -61,7 +76,7 @@ export class FloatLabelTextarea extends React.Component<
     this._actor.activate();
 
     this._actor.cancelOnDeactivate(
-      this._actor.isFocused.didChange.subscribe(isFocused => {
+      this._actor.isFocused.didChange.subscribe((isFocused) => {
         if (isFocused == true) {
           if (this.props.onFocus != null) {
             this.props.onFocus();

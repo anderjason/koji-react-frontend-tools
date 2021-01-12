@@ -1,5 +1,4 @@
 import { Currency, Money } from "@anderjason/money";
-import { ElementStyle } from "@anderjason/web";
 import * as React from "react";
 import { AlignBottom, Card, DisplayText, MoneyInput } from "../../../src";
 import { ReactDemoComponentProps } from "../_internal/ReactDemoContainer";
@@ -39,21 +38,22 @@ class Demo extends React.Component {
 
     return (
       <AlignBottom isRemixing={false}>
-        <Card>
-          <DisplayText
-            displayType="description"
-            text={formattedPrice}
-          />
+        <Card
+          renderContent={() => (
+            <React.Fragment>
+              <DisplayText displayType="description" text={formattedPrice} />
 
-          <MoneyInput
-            placeholderLabel="Price"
-            persistentLabel="Set price"
-            defaultValue={price}
-            maxValue={maxPrice}
-            onChange={price => this.setState({ price })}
-            allowEmpty={true}
-          />
-        </Card>
+              <MoneyInput
+                placeholderLabel="Price"
+                persistentLabel="Set price"
+                defaultValue={price}
+                maxValue={maxPrice}
+                onChange={(price) => this.setState({ price })}
+                allowEmpty={true}
+              />
+            </React.Fragment>
+          )}
+        />
       </AlignBottom>
     );
   }
@@ -61,37 +61,31 @@ class Demo extends React.Component {
       `,
     });
 
-    const formattedPrice = price != null ? 
-      `The price is ${price.toString("$1.00")}` : 
-      "Price is not set";
+    const formattedPrice =
+      price != null
+        ? `The price is ${price.toString("$1.00")}`
+        : "Price is not set";
 
     return (
       <AlignBottom isRemixing={false}>
-        <Card>
-          <DisplayText
-            displayType="description"
-            text={formattedPrice}
-          />
+        <Card
+          renderContent={() => (
+            <React.Fragment>
+              <DisplayText displayType="description" text={formattedPrice} />
 
-          <MoneyInput
-            placeholderLabel="Price"
-            persistentLabel="Set price"
-            defaultValue={price}
-            maxValue={maxPrice}
-            onChange={(price) => this.setState({ price })}
-            allowEmpty={true}
-          />
-        </Card>
+              <MoneyInput
+                placeholderLabel="Price"
+                persistentLabel="Set price"
+                defaultValue={price}
+                maxValue={maxPrice}
+                onChange={(price) => this.setState({ price })}
+                allowEmpty={true}
+              />
+            </React.Fragment>
+          )}
+        />
       </AlignBottom>
     );
   }
 }
 
-const CurrentValueStyle = ElementStyle.givenDefinition({
-  css: `
-    color: #007AFF;
-    font-family: monospace;
-    margin: 0 50px;
-    font-size: 16px;
-  `,
-});

@@ -15,15 +15,17 @@ class Demo extends React.Component {
   render() {
     return (
       <AlignBottom isRemixing={false}>
-        <Card>
-          <FloatLabelTextarea
-            placeholderLabel="Type a message"
-            persistentLabel="Message"
-            onChange={title => this.onChangeTitle(title)}
-            minRows={2}
-            maxRows={4}
-          />
-        </Card>
+        <Card
+          renderContent={() => (
+            <FloatLabelTextarea
+              placeholderLabel="Type a message"
+              persistentLabel="Message"
+              onChange={() => {}}
+              minRows={2}
+              maxRows={4}
+            />
+          )}
+        />
       </AlignBottom>
     );
   }
@@ -33,15 +35,17 @@ class Demo extends React.Component {
 
     return (
       <AlignBottom isRemixing={false}>
-        <Card>
-          <FloatLabelTextarea
-            placeholderLabel="Type a message"
-            persistentLabel="Message"
-            onChange={() => {}}
-            minRows={2}
-            maxRows={4}
-          />
-        </Card>
+        <Card
+          renderContent={() => (
+            <FloatLabelTextarea
+              placeholderLabel="Type a message"
+              persistentLabel="Message"
+              onChange={() => {}}
+              minRows={2}
+              maxRows={4}
+            />
+          )}
+        />
       </AlignBottom>
     );
   }

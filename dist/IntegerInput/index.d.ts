@@ -4,14 +4,18 @@ export interface IntegerInputProps {
     defaultValue?: number;
     placeholderLabel?: string;
     persistentLabel?: string;
-    isInvalid?: boolean;
+    errorLabel?: string;
+    supportLabel?: string;
     onFocus?: () => void;
     onBlur?: () => void;
 }
 export declare class IntegerInput extends React.Component<IntegerInputProps, any> {
     private _ref;
     private _actor;
-    private _isInvalid;
+    private _errorLabel;
+    private _persistentLabel;
+    private _placeholderLabel;
+    private _supportLabel;
     componentDidUpdate(): void;
     componentDidMount(): void;
     componentWillUnmount(): void;

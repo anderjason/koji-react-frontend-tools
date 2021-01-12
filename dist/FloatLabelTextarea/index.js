@@ -8,37 +8,47 @@ class FloatLabelTextarea extends React.Component {
     constructor() {
         super(...arguments);
         this._ref = React.createRef();
-        this._isInvalid = observable_1.Observable.ofEmpty(observable_1.Observable.isStrictEqual);
+        this._errorLabel = observable_1.Observable.ofEmpty(observable_1.Observable.isStrictEqual);
         this._maxLength = observable_1.Observable.ofEmpty(observable_1.Observable.isStrictEqual);
         this._maxRows = observable_1.Observable.ofEmpty(observable_1.Observable.isStrictEqual);
         this._minRows = observable_1.Observable.ofEmpty(observable_1.Observable.isStrictEqual);
+        this._persistentLabel = observable_1.Observable.ofEmpty(observable_1.Observable.isStrictEqual);
+        this._placeholderLabel = observable_1.Observable.ofEmpty(observable_1.Observable.isStrictEqual);
+        this._supportLabel = observable_1.Observable.ofEmpty(observable_1.Observable.isStrictEqual);
     }
     componentDidUpdate() {
-        this._isInvalid.setValue(this.props.isInvalid || false);
+        this._errorLabel.setValue(this.props.errorLabel);
         this._maxLength.setValue(this.props.maxLength);
         this._maxRows.setValue(this.props.maxRows);
         this._minRows.setValue(this.props.minRows);
+        this._persistentLabel.setValue(this.props.persistentLabel);
+        this._placeholderLabel.setValue(this.props.placeholderLabel);
+        this._supportLabel.setValue(this.props.supportLabel);
     }
     componentDidMount() {
-        this._isInvalid.setValue(this.props.isInvalid || false);
         this._maxLength.setValue(this.props.maxLength);
+        this._errorLabel.setValue(this.props.errorLabel);
         this._maxRows.setValue(this.props.maxRows);
         this._minRows.setValue(this.props.minRows);
+        this._persistentLabel.setValue(this.props.persistentLabel);
+        this._placeholderLabel.setValue(this.props.placeholderLabel);
+        this._supportLabel.setValue(this.props.supportLabel);
         const value = observable_1.Observable.givenValue(this.props.defaultValue, observable_1.Observable.isStrictEqual);
         this._actor = new koji_frontend_tools_1.FloatLabelTextarea({
             displayTextGivenValue: (v) => v,
-            isInvalid: this._isInvalid,
+            errorLabel: this._errorLabel,
             maxLength: this._maxLength,
             maxRows: this._maxRows,
             minRows: this._minRows,
             parentElement: this._ref.current,
-            persistentLabel: this.props.persistentLabel,
-            placeholder: this.props.placeholderLabel,
+            persistentLabel: this._persistentLabel,
+            placeholderLabel: this._placeholderLabel,
+            supportLabel: this._supportLabel,
             value,
             valueGivenDisplayText: (v) => v,
         });
         this._actor.activate();
-        this._actor.cancelOnDeactivate(this._actor.isFocused.didChange.subscribe(isFocused => {
+        this._actor.cancelOnDeactivate(this._actor.isFocused.didChange.subscribe((isFocused) => {
             if (isFocused == true) {
                 if (this.props.onFocus != null) {
                     this.props.onFocus();

@@ -8,7 +8,8 @@ export interface IntegerInputProps {
   defaultValue?: number;
   placeholderLabel?: string;
   persistentLabel?: string;
-  isInvalid?: boolean;
+  errorLabel?: string;
+  supportLabel?: string;
   onFocus?: () => void;
   onBlur?: () => void;
 }
@@ -16,14 +17,27 @@ export interface IntegerInputProps {
 export class IntegerInput extends React.Component<IntegerInputProps, any> {
   private _ref = React.createRef<HTMLDivElement>();
   private _actor: IntegerInputActor;
-  private _isInvalid = Observable.ofEmpty<boolean>(Observable.isStrictEqual);
+  private _errorLabel = Observable.ofEmpty<string>(Observable.isStrictEqual);
+  private _persistentLabel = Observable.ofEmpty<string>(
+    Observable.isStrictEqual
+  );
+  private _placeholderLabel = Observable.ofEmpty<string>(
+    Observable.isStrictEqual
+  );
+  private _supportLabel = Observable.ofEmpty<string>(Observable.isStrictEqual);
 
   componentDidUpdate() {
-    this._isInvalid.setValue(this.props.isInvalid || false);
+    this._errorLabel.setValue(this.props.errorLabel);
+    this._persistentLabel.setValue(this.props.persistentLabel);
+    this._placeholderLabel.setValue(this.props.placeholderLabel);
+    this._supportLabel.setValue(this.props.supportLabel);
   }
 
   componentDidMount() {
-    this._isInvalid.setValue(this.props.isInvalid || false);
+    this._errorLabel.setValue(this.props.errorLabel);
+    this._persistentLabel.setValue(this.props.persistentLabel);
+    this._placeholderLabel.setValue(this.props.placeholderLabel);
+    this._supportLabel.setValue(this.props.supportLabel);
 
     const value = Observable.givenValue(
       this.props.defaultValue,
@@ -31,11 +45,12 @@ export class IntegerInput extends React.Component<IntegerInputProps, any> {
     );
 
     this._actor = new IntegerInputActor({
+      errorLabel: this._errorLabel,
       parentElement: this._ref.current,
+      persistentLabel: this._persistentLabel,
+      placeholderLabel: this._placeholderLabel,
+      supportLabel: this._supportLabel,
       value,
-      placeholder: this.props.placeholderLabel,
-      persistentLabel: this.props.persistentLabel,
-      isInvalid: this._isInvalid
     });
 
     this._actor.activate();

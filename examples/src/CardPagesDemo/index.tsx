@@ -9,7 +9,10 @@ interface CardPagesDemoState {
   additionalPages: CardPage[];
 }
 
-export class CardPagesDemo extends React.Component<ReactDemoComponentProps, CardPagesDemoState> {
+export class CardPagesDemo extends React.Component<
+  ReactDemoComponentProps,
+  CardPagesDemoState
+> {
   state = {
     additionalPages: [],
   } as CardPagesDemoState;
@@ -26,14 +29,14 @@ export class CardPagesDemo extends React.Component<ReactDemoComponentProps, Card
             additionalPages: [
               {
                 title: "Additional options",
-                content: <div>Hello world</div>,
-                footerContent: <div>Footer content</div>,
+                renderContent: () => <div>Hello world</div>,
+                renderFooterContent: () => <div>Footer content</div>,
                 onRemoved: () => {
-                  console.log("on removed")
+                  console.log("on removed");
                   this.setState({
-                    additionalPages: []
-                  })
-                }
+                    additionalPages: [],
+                  });
+                },
               },
             ],
           });
@@ -66,9 +69,11 @@ class Demo extends React.Component {
   render() {
     return (
       <AlignBottom isRemixing={false}>
-        <Card>
-          <div style={{ textAlign: "center" }}>First page</div>
-        </Card>
+        <Card
+          renderContent={() => (
+            <div style={{ textAlign: "center" }}>First page</div>
+          )}
+        />
       </AlignBottom>
     );
   }
@@ -90,9 +95,12 @@ class Demo extends React.Component {
 
     return (
       <AlignBottom isRemixing={false}>
-        <Card additionalPages={additionalPages}>
-          <div style={{ textAlign: "center" }}>First page</div>
-        </Card>
+        <Card
+          additionalPages={additionalPages}
+          renderContent={() => (
+            <div style={{ textAlign: "center" }}>First page</div>
+          )}
+        />
       </AlignBottom>
     );
   }
@@ -103,9 +111,12 @@ class Demo extends React.Component {
 
     return (
       <AlignBottom isRemixing={false}>
-        <Card additionalPages={additionalPages}>
-          <div style={{ textAlign: "center" }}>First page</div>
-        </Card>
+        <Card
+          additionalPages={additionalPages}
+          renderContent={() => (
+            <div style={{ textAlign: "center" }}>First page</div>
+          )}
+        />
       </AlignBottom>
     );
   }

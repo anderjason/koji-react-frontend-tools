@@ -8,25 +8,39 @@ export interface MoneyInputProps {
 
   allowEmpty?: boolean;
   defaultValue?: Money;
-  placeholderLabel?: string;
-  persistentLabel?: string;
+  errorLabel?: string;
   maxValue?: Money;
-  isInvalid?: boolean;
-  onFocus?: () => void;
   onBlur?: () => void;
+  onFocus?: () => void;
+  persistentLabel?: string;
+  placeholderLabel?: string;
+  supportLabel?: string;
 }
 
 export class MoneyInput extends React.Component<MoneyInputProps, any> {
   private _ref = React.createRef<HTMLDivElement>();
   private _actor: MoneyInputActor;
-  private _isInvalid = Observable.ofEmpty<boolean>(Observable.isStrictEqual);
+  private _errorLabel = Observable.ofEmpty<string>(Observable.isStrictEqual);
+  private _persistentLabel = Observable.ofEmpty<string>(
+    Observable.isStrictEqual
+  );
+  private _placeholderLabel = Observable.ofEmpty<string>(
+    Observable.isStrictEqual
+  );
+  private _supportLabel = Observable.ofEmpty<string>(Observable.isStrictEqual);
 
   componentDidUpdate() {
-    this._isInvalid.setValue(this.props.isInvalid || false);
+    this._errorLabel.setValue(this.props.errorLabel);
+    this._persistentLabel.setValue(this.props.persistentLabel);
+    this._placeholderLabel.setValue(this.props.placeholderLabel);
+    this._supportLabel.setValue(this.props.supportLabel);
   }
 
   componentDidMount() {
-    this._isInvalid.setValue(this.props.isInvalid || false);
+    this._errorLabel.setValue(this.props.errorLabel);
+    this._persistentLabel.setValue(this.props.persistentLabel);
+    this._placeholderLabel.setValue(this.props.placeholderLabel);
+    this._supportLabel.setValue(this.props.supportLabel);
 
     const value = Observable.givenValue<Money>(
       this.props.defaultValue,
@@ -34,19 +48,20 @@ export class MoneyInput extends React.Component<MoneyInputProps, any> {
     );
 
     this._actor = new MoneyInputActor({
-      parentElement: this._ref.current,
-      value,
-      persistentLabel: this.props.persistentLabel,
-      placeholderLabel: this.props.placeholderLabel,
+      allowEmpty: this.props.allowEmpty || false,
+      errorLabel: this._errorLabel,
       maxValue: this.props.maxValue,
-      isInvalid: this._isInvalid,
-      allowEmpty: this.props.allowEmpty || false
+      parentElement: this._ref.current,
+      persistentLabel: this._persistentLabel,
+      placeholderLabel: this._placeholderLabel,
+      supportLabel: this._supportLabel,
+      value,
     });
 
     this._actor.activate();
 
     this._actor.cancelOnDeactivate(
-      this._actor.isFocused.didChange.subscribe(isFocused => {
+      this._actor.isFocused.didChange.subscribe((isFocused) => {
         if (isFocused == true) {
           if (this.props.onFocus != null) {
             this.props.onFocus();

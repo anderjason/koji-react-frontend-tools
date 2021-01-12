@@ -23,7 +23,7 @@ class Card extends React.Component {
                     const layout = this._actor.addPage({
                         title,
                         anchorBottom,
-                        onRemoved: requestedPage.onRemoved
+                        onRemoved: requestedPage.onRemoved,
                     });
                     this._layoutDatas.push({
                         title,
@@ -39,13 +39,50 @@ class Card extends React.Component {
                     layoutData.layout.deactivate();
                 }
             }
-            ReactDOM.render(React.createElement(React.Fragment, null, this.props.children), this._actor.baseElement);
+            let content;
+            if (this.props.renderContent != null) {
+                content = this.props.renderContent();
+            }
+            else {
+                content = null;
+            }
+            ReactDOM.render(React.createElement(React.Fragment, null, content), this._actor.baseElement);
+            let footerContent;
+            if (this.props.renderFooterContent != null) {
+                footerContent = this.props.renderFooterContent();
+            }
+            else {
+                footerContent = null;
+            }
+            ReactDOM.render(React.createElement(React.Fragment, null, footerContent), this._actor.baseFooterElement);
+            let hiddenContent;
+            if (this.props.renderHiddenContent != null) {
+                hiddenContent = this.props.renderHiddenContent();
+            }
+            else {
+                hiddenContent = null;
+            }
+            ReactDOM.render(React.createElement(React.Fragment, null, hiddenContent), this._actor.hiddenElement);
             this._layoutDatas.forEach((layoutData, idx) => {
                 const additionalPage = requestedPages[idx];
                 layoutData.title.setValue(additionalPage.title);
                 layoutData.anchorBottom.setValue(additionalPage.anchorBottom || false);
-                ReactDOM.render(React.createElement(React.Fragment, null, additionalPage.content), layoutData.layout.element);
-                ReactDOM.render(React.createElement(React.Fragment, null, additionalPage.footerContent), layoutData.layout.footerElement);
+                let pageContent;
+                if (additionalPage.renderContent != null) {
+                    pageContent = additionalPage.renderContent();
+                }
+                else {
+                    pageContent = null;
+                }
+                ReactDOM.render(React.createElement(React.Fragment, null, pageContent), layoutData.layout.element);
+                let pageFooterContent;
+                if (additionalPage.renderFooterContent != null) {
+                    pageFooterContent = additionalPage.renderFooterContent();
+                }
+                else {
+                    pageFooterContent = null;
+                }
+                ReactDOM.render(React.createElement(React.Fragment, null, pageFooterContent), layoutData.layout.footerElement);
             });
         };
     }
@@ -69,10 +106,7 @@ class Card extends React.Component {
         this._actor.activate();
         this._actor.cancelOnDeactivate(this._actor.selectedLayout.didChange.subscribe(() => {
             this.renderPages();
-        }));
-        ReactDOM.render(React.createElement(React.Fragment, null, this.props.children), this._actor.baseElement);
-        ReactDOM.render(React.createElement(React.Fragment, null, this.props.footerContent), this._actor.baseFooterElement);
-        ReactDOM.render(React.createElement(React.Fragment, null, this.props.hiddenContent), this._actor.hiddenElement);
+        }, true));
     }
     componentWillUnmount() {
         if (this._actor != null) {

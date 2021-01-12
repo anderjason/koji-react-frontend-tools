@@ -1,10 +1,5 @@
 import * as React from "react";
-import {
-  AlignBottom,
-  Card,
-  EditableText,
-  SubmitButton,
-} from "../../../src";
+import { AlignBottom, Card, EditableText, SubmitButton } from "../../../src";
 import { ReactDemoComponentProps } from "../_internal/ReactDemoContainer";
 
 export class EditableTextDemo extends React.Component<
@@ -20,23 +15,25 @@ class Demo extends React.Component {
   render() {
     return (
       <AlignBottom isRemixing={true}>
-        <Card>
-          <EditableText
-            displayType="title"
-            placeholderLabel="Title"
-            theme={theme}
-          />
-          <EditableText
-            displayType="description"
-            placeholderLabel="Description"
-          />
-          <SubmitButton
-            text="Action"
-            mode="ready"
-            theme={theme}
-            onClick={() => {}}
-          />
-        </Card>
+        <Card
+          renderFooterContent={() => (
+            <SubmitButton text="Action" mode="ready" onClick={() => {}} />
+          )}
+          renderContent={() => (
+            <React.Fragment>
+              <EditableText
+                displayType="title"
+                placeholderLabel="Title"
+                onChange={() => {}}
+              />
+              <EditableText
+                displayType="description"
+                placeholderLabel="Description"
+                onChange={() => {}}
+              />
+            </React.Fragment>
+          )}
+        />
       </AlignBottom>
     );
   }
@@ -46,23 +43,25 @@ class Demo extends React.Component {
 
     return (
       <AlignBottom isRemixing={true}>
-        <Card>
-          <EditableText
-            displayType="title"
-            placeholderLabel="Title"
-            onChange={() => {}}
-          />
-          <EditableText
-            displayType="description"
-            placeholderLabel="Description"
-            onChange={() => {}}
-          />
-          <SubmitButton
-            text="Action"
-            mode="ready"
-            onClick={() => {}}
-          />
-        </Card>
+        <Card
+          renderFooterContent={() => (
+            <SubmitButton text="Action" mode="ready" onClick={() => {}} />
+          )}
+          renderContent={() => (
+            <React.Fragment>
+              <EditableText
+                displayType="title"
+                placeholderLabel="Title"
+                onChange={() => {}}
+              />
+              <EditableText
+                displayType="description"
+                placeholderLabel="Description"
+                onChange={() => {}}
+              />
+            </React.Fragment>
+          )}
+        />
       </AlignBottom>
     );
   }

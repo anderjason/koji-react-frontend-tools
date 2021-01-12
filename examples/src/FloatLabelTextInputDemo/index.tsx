@@ -15,13 +15,15 @@ class Demo extends React.Component {
   render() {
     return (
       <AlignBottom isRemixing={false}>
-        <Card>
-          <FloatLabelTextInput
-            placeholderLabel="Title"
-            persistentLabel="Set title"
-            onChange={title => this.onChangeTitle(title)}
-          />
-        </Card>
+        <Card
+          renderContent={() => (
+            <FloatLabelTextInput
+              placeholderLabel="Title"
+              persistentLabel="Set title"
+              onChange={() => {}}
+            />
+          )}
+        />
       </AlignBottom>
     );
   }
@@ -31,13 +33,15 @@ class Demo extends React.Component {
 
     return (
       <AlignBottom isRemixing={false}>
-        <Card>
-          <FloatLabelTextInput
-            placeholderLabel="Title"
-            persistentLabel="Set title"
-            onChange={() => {}}
-          />
-        </Card>
+        <Card
+          renderContent={() => (
+            <FloatLabelTextInput
+              placeholderLabel="Title"
+              persistentLabel="Set title"
+              onChange={() => {}}
+            />
+          )}
+        />
       </AlignBottom>
     );
   }
