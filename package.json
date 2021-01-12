@@ -1,6 +1,6 @@
 {
   "name": "@anderjason/koji-react-frontend-tools",
-  "version": "2.1.5",
+  "version": "2.2.0",
   "description": "",
   "main": "./dist/index.js",
   "repository": {
@@ -22,13 +22,13 @@
   "dependencies": {
     "@anderjason/color": "^2.0.0",
     "@anderjason/geometry": "^3.0.0",
-    "@anderjason/koji-frontend-tools": "^5.1.6",
+    "@anderjason/koji-frontend-tools": "^5.1.12",
     "@anderjason/money": "^1.0.0",
     "@anderjason/observable": "^3.2.1",
     "@anderjason/tests": "^1.0.1",
     "@anderjason/time": "^2.0.2",
     "@anderjason/util": "^2.0.3",
-    "@anderjason/web": "^7.2.2",
+    "@anderjason/web": "^7.2.3",
     "@withkoji/vcc": "^1.1.47",
     "skytree": "^9.3.1"
   },

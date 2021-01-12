@@ -15,7 +15,7 @@ export class PublishButtonDemo extends React.Component<
     mode: { type: "ready" },
   } as PublishButtonDemoState;
 
-  onClickUnlock() {
+  onClick() {
     // to publish if there are no validation errors:
     // KojiTools.instance.instantRemix.finish();
     
@@ -95,8 +95,8 @@ class Demo extends React.Component {
 
     return (
       <PublishButton
-        onClick={() => this.onClickUnlock()}
         mode={mode}
+        onClick={() => KojiTools.instance.instantRemix.finish()}
       />
     );
   }
@@ -107,7 +107,7 @@ class Demo extends React.Component {
     return (
       <PublishButton
         mode={mode}
-        onClick={() => this.onClickUnlock()}
+        onClick={() => this.onClick()}
       />
     );
   }
