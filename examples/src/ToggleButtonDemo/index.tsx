@@ -1,35 +1,41 @@
 import * as React from "react";
-import { AlignBottom, Card, IntegerInput } from "../../../src";
+import { AlignBottom, Card, ToggleButton } from "../../../src";
 import { ReactDemoComponentProps } from "../_internal/ReactDemoContainer";
 
-export class IntegerInputDemo extends React.Component<
+interface ToggleButtonDemoState {
+  isActive: boolean;
+}
+
+export class ToggleButtonDemo extends React.Component<
   ReactDemoComponentProps,
-  any
+  ToggleButtonDemoState
 > {
   state = {
-    qty: 5,
+    isActive: false
   };
 
   render() {
+    const { isActive } = this.state;
+
     // display example code in the sidebar
     this.props.demoActor.exampleCode.setValue({
       language: "jsx",
       code: `
 class Demo extends React.Component {
   state = {
-    qty: 5,
+    isActive: false
   };
-      
+
   render() {
+    const { isActive } = this.state;
+
     return (
       <AlignBottom isRemixing={false}>
         <Card
           renderContent={() => (
-            <IntegerInput
-              placeholderLabel="Quantity"
-              persistentLabel="Set quantity"
-              defaultValue={this.state.qty}
-              onChange={(qty) => this.setState({ qty })}
+            <ToggleButton
+              defaultValue={isActive}
+              onChange={(value) => this.setState({ isActive: value })}
             />
           )}
         />
@@ -44,10 +50,9 @@ class Demo extends React.Component {
       <AlignBottom isRemixing={false}>
         <Card
           renderContent={() => (
-            <IntegerInput
-              placeholderLabel="Quantity"
-              defaultValue={this.state.qty}
-              onChange={(qty) => this.setState({ qty })}
+            <ToggleButton
+              defaultValue={isActive}
+              onChange={(value) => this.setState({ isActive: value })}
             />
           )}
         />

@@ -46,7 +46,7 @@ class Card extends React.Component {
             else {
                 content = null;
             }
-            ReactDOM.render(React.createElement(React.Fragment, null, content), this._actor.baseElement);
+            ReactDOM.render(React.createElement(React.Fragment, null, content), this._actor.element);
             let footerContent;
             if (this.props.renderFooterContent != null) {
                 footerContent = this.props.renderFooterContent();
@@ -54,7 +54,7 @@ class Card extends React.Component {
             else {
                 footerContent = null;
             }
-            ReactDOM.render(React.createElement(React.Fragment, null, footerContent), this._actor.baseFooterElement);
+            ReactDOM.render(React.createElement(React.Fragment, null, footerContent), this._actor.footerElement);
             let hiddenContent;
             if (this.props.renderHiddenContent != null) {
                 hiddenContent = this.props.renderHiddenContent();

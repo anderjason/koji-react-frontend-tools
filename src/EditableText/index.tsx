@@ -1,6 +1,5 @@
 import { EditableText as EditableTextActor } from "@anderjason/koji-frontend-tools";
 import { DisplayTextType } from "@anderjason/koji-frontend-tools/dist/DisplayText";
-import { KojiTheme } from "@anderjason/koji-frontend-tools/dist/KojiAppearance";
 import { Observable } from "@anderjason/observable";
 import * as React from "react";
 
@@ -11,7 +10,6 @@ export interface EditableTextProps {
 
   defaultValue?: string;
   maxLength?: number;
-  theme?: KojiTheme;
   isInvalid?: boolean;
   onFocus?: () => void;
   onBlur?: () => void;
@@ -20,18 +18,15 @@ export interface EditableTextProps {
 export class EditableText extends React.Component<EditableTextProps, any> {
   private _ref = React.createRef<HTMLDivElement>();
   private _actor: EditableTextActor;
-  private _theme = Observable.ofEmpty<KojiTheme>(Observable.isStrictEqual);
   private _maxLength = Observable.ofEmpty<number>(Observable.isStrictEqual);
   private _isInvalid = Observable.ofEmpty<boolean>(Observable.isStrictEqual);
 
   componentDidUpdate() {
-    this._theme.setValue(this.props.theme);
     this._maxLength.setValue(this.props.maxLength);
     this._isInvalid.setValue(this.props.isInvalid);
   }
 
   componentDidMount() {
-    this._theme.setValue(this.props.theme);
     this._maxLength.setValue(this.props.maxLength);
     this._isInvalid.setValue(this.props.isInvalid);
 
@@ -45,7 +40,6 @@ export class EditableText extends React.Component<EditableTextProps, any> {
       output: value,
       displayType: this.props.displayType,
       placeholderLabel: this.props.placeholderLabel,
-      theme: this._theme,
       maxLength: this._maxLength,
       isInvalid: this._isInvalid
     });

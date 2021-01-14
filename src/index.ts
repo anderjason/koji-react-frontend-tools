@@ -8,10 +8,12 @@ import { IntegerInput } from "./IntegerInput";
 import { KojiReactConfig } from "./KojiReactConfig";
 import { LoadingIndicator } from "./LoadingIndicator";
 import { MoneyInput } from "./MoneyInput";
+import { OptionsList } from "./OptionsList";
 import { PublishButton } from "./PublishButton";
 import { ReactBridge } from "./ReactBridge";
 import { SubmitButton } from "./SubmitButton";
 import { ThemeToolbar } from "./ThemeToolbar";
+import { ToggleButton } from "./ToggleButton";
 
 export {
   AlignBottom,
@@ -24,8 +26,10 @@ export {
   KojiReactConfig,
   LoadingIndicator,
   MoneyInput,
+  OptionsList,
   PublishButton,
   ReactBridge,
   SubmitButton,
   ThemeToolbar,
+  ToggleButton
 };

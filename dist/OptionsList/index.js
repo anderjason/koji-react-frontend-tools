@@ -1,24 +1,18 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.DisplayText = void 0;
+exports.OptionsList = void 0;
 const React = require("react");
 const koji_frontend_tools_1 = require("@anderjason/koji-frontend-tools");
 const observable_1 = require("@anderjason/observable");
-class DisplayText extends React.PureComponent {
+class OptionsList extends React.PureComponent {
     constructor() {
         super(...arguments);
         this._ref = React.createRef();
-        this._text = observable_1.Observable.ofEmpty(observable_1.Observable.isStrictEqual);
-    }
-    componentDidUpdate() {
-        this._text.setValue(this.props.text);
     }
     componentDidMount() {
-        this._text.setValue(this.props.text);
-        this._actor = new koji_frontend_tools_1.DisplayText({
+        this._actor = new koji_frontend_tools_1.OptionsList({
             parentElement: this._ref.current,
-            text: this._text,
-            displayType: this.props.displayType,
+            items: this.props.items || observable_1.ObservableArray.ofEmpty()
         });
         this._actor.activate();
     }
@@ -29,8 +23,8 @@ class DisplayText extends React.PureComponent {
         }
     }
     render() {
-        return React.createElement("div", { className: "kft-text", ref: this._ref });
+        return React.createElement("div", { ref: this._ref });
     }
 }
-exports.DisplayText = DisplayText;
+exports.OptionsList = OptionsList;
 //# sourceMappingURL=index.js.map

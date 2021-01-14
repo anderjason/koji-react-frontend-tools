@@ -118,7 +118,7 @@ export class Card extends React.Component<CardProps, any> {
 
     ReactDOM.render(
       <React.Fragment>{content}</React.Fragment>,
-      this._actor.baseElement
+      this._actor.element
     );
 
     let footerContent;
@@ -130,7 +130,7 @@ export class Card extends React.Component<CardProps, any> {
 
     ReactDOM.render(
       <React.Fragment>{footerContent}</React.Fragment>,
-      this._actor.baseFooterElement
+      this._actor.footerElement
     );
 
     let hiddenContent;

@@ -8,17 +8,14 @@ class EditableText extends React.Component {
     constructor() {
         super(...arguments);
         this._ref = React.createRef();
-        this._theme = observable_1.Observable.ofEmpty(observable_1.Observable.isStrictEqual);
         this._maxLength = observable_1.Observable.ofEmpty(observable_1.Observable.isStrictEqual);
         this._isInvalid = observable_1.Observable.ofEmpty(observable_1.Observable.isStrictEqual);
     }
     componentDidUpdate() {
-        this._theme.setValue(this.props.theme);
         this._maxLength.setValue(this.props.maxLength);
         this._isInvalid.setValue(this.props.isInvalid);
     }
     componentDidMount() {
-        this._theme.setValue(this.props.theme);
         this._maxLength.setValue(this.props.maxLength);
         this._isInvalid.setValue(this.props.isInvalid);
         const value = observable_1.Observable.givenValue(this.props.defaultValue, observable_1.Observable.isStrictEqual);
@@ -27,7 +24,6 @@ class EditableText extends React.Component {
             output: value,
             displayType: this.props.displayType,
             placeholderLabel: this.props.placeholderLabel,
-            theme: this._theme,
             maxLength: this._maxLength,
             isInvalid: this._isInvalid
         });

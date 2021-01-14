@@ -15,6 +15,10 @@
 * The `placeholder` prop has been renamed to `placeholderLabel`
 * `isInvalid` has been replaced with a new `errorLabel` string prop. Whenever `errorLabel` contains a value, the field will change to an invalid state and display the error message.
 
+### DisplayText, EditableText, SubmitButton
+
+* The `theme` property has been removed
+
 ## API Reference
 
 `TODO`

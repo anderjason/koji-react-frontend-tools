@@ -1,5 +1,4 @@
 import { DisplayTextType } from "@anderjason/koji-frontend-tools/dist/DisplayText";
-import { KojiTheme } from "@anderjason/koji-frontend-tools/dist/KojiAppearance";
 import * as React from "react";
 export interface EditableTextProps {
     onChange: (value: string) => void;
@@ -7,7 +6,6 @@ export interface EditableTextProps {
     placeholderLabel: string;
     defaultValue?: string;
     maxLength?: number;
-    theme?: KojiTheme;
     isInvalid?: boolean;
     onFocus?: () => void;
     onBlur?: () => void;
@@ -15,7 +13,6 @@ export interface EditableTextProps {
 export declare class EditableText extends React.Component<EditableTextProps, any> {
     private _ref;
     private _actor;
-    private _theme;
     private _maxLength;
     private _isInvalid;
     componentDidUpdate(): void;

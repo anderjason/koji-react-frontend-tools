@@ -14,6 +14,8 @@ import { PublishButtonDemo } from "./PublishButtonDemo";
 import { CardPagesDemo } from "./CardPagesDemo";
 import { CardFooterDemo } from "./CardFooterDemo";
 import { CardHiddenDemo } from "./CardHiddenDemo";
+import { ToggleButtonDemo } from "./ToggleButtonDemo";
+import { OptionsListDemo } from "./OptionsListDemo";
 
 const definitions = ObservableArray.givenValues<ExampleDefinition>([
   {
@@ -83,6 +85,12 @@ const definitions = ObservableArray.givenValues<ExampleDefinition>([
     }),
   },
   {
+    title: "Options list",
+    actor: new ReactDemoContainer({
+      component: OptionsListDemo,
+    }),
+  },
+  {
     title: "Publish button",
     actor: new ReactDemoContainer({
       component: PublishButtonDemo,
@@ -94,6 +102,12 @@ const definitions = ObservableArray.givenValues<ExampleDefinition>([
       component: SubmitButtonDemo,
     }),
   },
+  {
+    title: "Toggle button",
+    actor: new ReactDemoContainer({
+      component: ToggleButtonDemo,
+    }),
+  }
 ]);
 
 const main = new ExamplesHome({
