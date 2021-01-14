@@ -1,11 +1,14 @@
 import * as React from "react";
 import { Actor } from "skytree";
 import { OptionsList as OptionsListActor } from "@anderjason/koji-frontend-tools";
-import { ObservableArray } from "@anderjason/observable";
-import { OptionsListItemData } from "@anderjason/koji-frontend-tools/dist/OptionsList";
+import { Dict } from "@anderjason/observable";
+import { OptionDefinition } from "@anderjason/koji-frontend-tools/dist/OptionsList";
 
 export interface OptionsListProps {
-  items: ObservableArray<OptionsListItemData>;
+  definitions: OptionDefinition[];
+  onChange: (key: string, value: any) => void;
+  
+  defaultValues?: Dict<any>;
 }
 
 export class OptionsList extends React.PureComponent<OptionsListProps, any> {
@@ -15,7 +18,9 @@ export class OptionsList extends React.PureComponent<OptionsListProps, any> {
   componentDidMount() {
     this._actor = new OptionsListActor({
       parentElement: this._ref.current,
-      items: this.props.items || ObservableArray.ofEmpty<OptionsListItemData>()
+      defaultValues: this.props.defaultValues,
+      definitions: this.props.definitions,
+      onChange: this.props.onChange
     });
     this._actor.activate();
   }

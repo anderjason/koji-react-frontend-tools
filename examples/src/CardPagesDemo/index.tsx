@@ -32,7 +32,6 @@ export class CardPagesDemo extends React.Component<
                 renderContent: () => <div>Hello world</div>,
                 renderFooterContent: () => <div>Footer content</div>,
                 onRemoved: () => {
-                  console.log("on removed");
                   this.setState({
                     additionalPages: [],
                   });
