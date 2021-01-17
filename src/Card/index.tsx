@@ -1,6 +1,6 @@
 import * as React from "react";
-import { Card as CardActor } from "@anderjason/koji-frontend-tools";
 import ReactDOM = require("react-dom");
+import { Card as CardActor } from "@anderjason/koji-frontend-tools";
 import { CardMode } from "@anderjason/koji-frontend-tools/dist/Card";
 import { Observable } from "@anderjason/observable";
 import { CardLayout } from "@anderjason/koji-frontend-tools/dist/Card/_internal/CardLayout";

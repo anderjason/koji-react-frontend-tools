@@ -3,7 +3,7 @@ import { AlignBottom, Card, ToggleButton } from "../../../src";
 import { ReactDemoComponentProps } from "../_internal/ReactDemoContainer";
 
 interface ToggleButtonDemoState {
-  isActive: boolean;
+  isToggleActive: boolean;
 }
 
 export class ToggleButtonDemo extends React.Component<
@@ -11,11 +11,11 @@ export class ToggleButtonDemo extends React.Component<
   ToggleButtonDemoState
 > {
   state = {
-    isActive: false
-  };
+    isToggleActive: false
+  } as ToggleButtonDemoState;
 
   render() {
-    const { isActive } = this.state;
+    const { isToggleActive } = this.state;
 
     // display example code in the sidebar
     this.props.demoActor.exampleCode.setValue({
@@ -23,19 +23,19 @@ export class ToggleButtonDemo extends React.Component<
       code: `
 class Demo extends React.Component {
   state = {
-    isActive: false
+    isToggleActive: false
   };
 
   render() {
-    const { isActive } = this.state;
+    const { isToggleActive } = this.state;
 
     return (
       <AlignBottom isRemixing={false}>
         <Card
           renderContent={() => (
             <ToggleButton
-              defaultValue={isActive}
-              onChange={(value) => this.setState({ isActive: value })}
+              defaultValue={isToggleActive}
+              onChange={(value) => this.setState({ isToggleActive: value })}
             />
           )}
         />
@@ -51,8 +51,8 @@ class Demo extends React.Component {
         <Card
           renderContent={() => (
             <ToggleButton
-              defaultValue={isActive}
-              onChange={(value) => this.setState({ isActive: value })}
+              defaultValue={isToggleActive}
+              onChange={(value) => this.setState({ isToggleActive: value })}
             />
           )}
         />

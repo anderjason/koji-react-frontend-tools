@@ -1,9 +1,8 @@
 import * as React from "react";
-import { Actor } from "skytree";
+import ReactDOM = require("react-dom");
 import { AlignBottom as AlignBottomActor } from "@anderjason/koji-frontend-tools";
 import { Observable } from "@anderjason/observable";
 import { BooleanUtil } from "@anderjason/util/dist/BooleanUtil";
-import ReactDOM = require("react-dom");
 
 export interface AlignBottomProps {
   isRemixing: boolean;

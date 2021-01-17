@@ -1,5 +1,5 @@
-import { DisplayTextType } from "@anderjason/koji-frontend-tools/dist/DisplayText";
 import * as React from "react";
+import { DisplayTextType } from "@anderjason/koji-frontend-tools/dist/DisplayText";
 export interface EditableTextProps {
     onChange: (value: string) => void;
     displayType: DisplayTextType;

@@ -2,8 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Card = void 0;
 const React = require("react");
-const koji_frontend_tools_1 = require("@anderjason/koji-frontend-tools");
 const ReactDOM = require("react-dom");
+const koji_frontend_tools_1 = require("@anderjason/koji-frontend-tools");
 const observable_1 = require("@anderjason/observable");
 class Card extends React.Component {
     constructor() {

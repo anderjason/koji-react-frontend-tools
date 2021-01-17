@@ -2,10 +2,10 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AlignBottom = void 0;
 const React = require("react");
+const ReactDOM = require("react-dom");
 const koji_frontend_tools_1 = require("@anderjason/koji-frontend-tools");
 const observable_1 = require("@anderjason/observable");
 const BooleanUtil_1 = require("@anderjason/util/dist/BooleanUtil");
-const ReactDOM = require("react-dom");
 class AlignBottom extends React.Component {
     constructor() {
         super(...arguments);

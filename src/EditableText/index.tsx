@@ -1,7 +1,7 @@
+import * as React from "react";
 import { EditableText as EditableTextActor } from "@anderjason/koji-frontend-tools";
 import { DisplayTextType } from "@anderjason/koji-frontend-tools/dist/DisplayText";
 import { Observable } from "@anderjason/observable";
-import * as React from "react";
 
 export interface EditableTextProps {
   onChange: (value: string) => void;

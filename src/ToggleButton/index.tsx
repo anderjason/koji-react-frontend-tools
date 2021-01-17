@@ -11,23 +11,23 @@ export interface ToggleButtonProps {
 export class ToggleButton extends React.PureComponent<ToggleButtonProps, any> {
   private _ref = React.createRef<HTMLButtonElement>();
   private _actor: Actor;
-  private _isActive = Observable.ofEmpty<boolean>(Observable.isStrictEqual);
+  private _isToggleActive = Observable.ofEmpty<boolean>(Observable.isStrictEqual);
 
   componentDidMount() {
-    this._isActive.setValue(this.props.defaultValue);
+    this._isToggleActive.setValue(this.props.defaultValue);
     
     this._actor = new ToggleButtonActor({
       target: {
         type: "thisElement",
         element: this._ref.current,
       },
-      isActive: this._isActive,
+      isToggleActive: this._isToggleActive,
     });
     this._actor.activate();
 
     this._actor.cancelOnDeactivate(
-      this._actor.isActive.didChange.subscribe(isActive => {
-        this.props.onChange(isActive);
+      this._actor.isActive.didChange.subscribe(isToggleActive => {
+        this.props.onChange(isToggleActive);
       })
     );
   }

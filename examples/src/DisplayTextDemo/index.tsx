@@ -15,10 +15,10 @@ export class DisplayTextDemo extends React.Component<
     this.props.demoActor.exampleCode.setValue({
       language: "jsx",
       code: `
-// const demoText = "Lorem ipsum dolor sit...
-
 class Demo extends React.Component {
   render() {
+    const demoText = "Lorem ipsum dolor sit...";
+
     return (
       <AlignBottom isRemixing={false}>
         <Card

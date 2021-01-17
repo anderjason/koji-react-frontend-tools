@@ -6,7 +6,7 @@ export interface ToggleButtonProps {
 export declare class ToggleButton extends React.PureComponent<ToggleButtonProps, any> {
     private _ref;
     private _actor;
-    private _isActive;
+    private _isToggleActive;
     componentDidMount(): void;
     componentWillUnmount(): void;
     render(): JSX.Element;

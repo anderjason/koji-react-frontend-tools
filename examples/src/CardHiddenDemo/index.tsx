@@ -18,31 +18,25 @@ export class CardHiddenDemo extends React.Component<
       language: "jsx",
       code: `
 class Demo extends React.Component {
-  state = {
-    isVisible: false
-  };
-
   render() {
-    const { isVisible } = this.state;
-
     return (
       <AlignBottom isRemixing={false}>
         <Card
-          mode={ isVisible ? "visible" : "hidden" }
+          mode="${isVisible ? "visible" : "hidden"}"
           maxHeight={250}
           anchorBottom={false}
-          hiddenContent={
+          renderHiddenContent={() =>
             <SubmitButton
               mode="ready"
               text="Show card"
-              onClick={() => this.setState({ isVisible: true })}
+              onClick={() => { }}
             />
           }
-          footerContent={
+          renderFooterContent={() =>
             <SubmitButton
               mode="ready"
               text="Hide card"
-              onClick={() => this.setState({ isVisible: false })}
+              onClick={() => { }}
             />
           }
         >

@@ -8,20 +8,20 @@ class ToggleButton extends React.PureComponent {
     constructor() {
         super(...arguments);
         this._ref = React.createRef();
-        this._isActive = observable_1.Observable.ofEmpty(observable_1.Observable.isStrictEqual);
+        this._isToggleActive = observable_1.Observable.ofEmpty(observable_1.Observable.isStrictEqual);
     }
     componentDidMount() {
-        this._isActive.setValue(this.props.defaultValue);
+        this._isToggleActive.setValue(this.props.defaultValue);
         this._actor = new koji_frontend_tools_1.ToggleButton({
             target: {
                 type: "thisElement",
                 element: this._ref.current,
             },
-            isActive: this._isActive,
+            isToggleActive: this._isToggleActive,
         });
         this._actor.activate();
-        this._actor.cancelOnDeactivate(this._actor.isActive.didChange.subscribe(isActive => {
-            this.props.onChange(isActive);
+        this._actor.cancelOnDeactivate(this._actor.isActive.didChange.subscribe(isToggleActive => {
+            this.props.onChange(isToggleActive);
         }));
     }
     componentWillUnmount() {

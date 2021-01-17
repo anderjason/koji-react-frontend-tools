@@ -17,9 +17,6 @@ class Demo extends React.Component {
       <AlignBottom isRemixing={false}>
         <Card
           maxHeight={200}
-          renderFooterContent={() => (
-            <SubmitButton mode="disabled" text="Purchase" onClick={() => {}} />
-          )}
           renderContent={() => (
             <div>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -39,6 +36,9 @@ class Demo extends React.Component {
               nulla pariatur. Excepteur sint occaecat cupidatat non proident,
               sunt in culpa qui officia deserunt mollit anim id est laborum.
             </div>
+          )}
+          renderFooterContent={() => (
+            <SubmitButton mode="disabled" text="Purchase" onClick={() => {}} />
           )}
         />
       </AlignBottom>
@@ -52,9 +52,6 @@ class Demo extends React.Component {
       <AlignBottom isRemixing={false}>
         <Card
           maxHeight={200}
-          renderFooterContent={() => (
-            <SubmitButton mode="disabled" text="Purchase" onClick={() => {}} />
-          )}
           renderContent={() => (
             <div>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -74,6 +71,9 @@ class Demo extends React.Component {
               nulla pariatur. Excepteur sint occaecat cupidatat non proident,
               sunt in culpa qui officia deserunt mollit anim id est laborum.
             </div>
+          )}
+          renderFooterContent={() => (
+            <SubmitButton mode="disabled" text="Purchase" onClick={() => {}} />
           )}
         />
       </AlignBottom>

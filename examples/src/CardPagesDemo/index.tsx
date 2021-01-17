@@ -66,6 +66,14 @@ export class CardPagesDemo extends React.Component<
         code: `
 class Demo extends React.Component {
   render() {
+    const additionalPages = [
+      {
+        title: "Additional options",
+        renderContent: () => <div>Hello world</div>,
+        renderFooterContent: () => <div>Footer content</div>,
+      }
+    ];
+
     return (
       <AlignBottom isRemixing={false}>
         <Card
@@ -87,8 +95,9 @@ class Demo extends React.Component {
   render() {
     const additionalPages = [
       {
-        title: "Who can see this?",
-        content: <div>List of switch options...</div>
+        title: "Additional options",
+        renderContent: () => <div>Hello world</div>,
+        renderFooterContent: () => <div>Footer content</div>,
       }
     ];
 

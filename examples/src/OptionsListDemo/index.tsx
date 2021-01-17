@@ -20,10 +20,13 @@ export class OptionsListDemo extends React.Component<
         <Card
           renderContent={() => (
             <OptionsList
-              defaultValues={{}}
               onChange={(key, value) => {
                 console.log(`${key}=${value}`)
               }}
+              defaultValues={{
+                approve: true,
+                price: "free"
+              }}              
               definitions={[
                 {
                   type: "detail",
@@ -39,7 +42,7 @@ export class OptionsListDemo extends React.Component<
                 {
                   type: "toggle",
                   label: "Approve posts before they go live",
-                  propertyName: "approvePosts"
+                  propertyName: "approve"
                 },
                 {
                   type: "radio",
