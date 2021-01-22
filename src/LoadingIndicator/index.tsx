@@ -5,7 +5,7 @@ import { Color } from "@anderjason/color";
 import { Observable } from "@anderjason/observable";
 
 export interface LoadingIndicatorProps {
-  color: Color;
+  color?: string | Color;
 }
 
 export class LoadingIndicator extends React.PureComponent<
@@ -17,11 +17,25 @@ export class LoadingIndicator extends React.PureComponent<
   private _color = Observable.ofEmpty<Color>(Color.isEqual);
 
   componentDidUpdate() {
-    this._color.setValue(this.props.color);
+    let color: Color;
+    if (typeof this.props.color === "string") {
+      color = Color.givenHexString(this.props.color);
+    } else {
+      color = this.props.color || Color.givenHexString("#000");
+    }
+
+    this._color.setValue(color);
   }
 
   componentDidMount() {
-    this._color.setValue(this.props.color);
+    let color: Color;
+    if (typeof this.props.color === "string") {
+      color = Color.givenHexString(this.props.color);
+    } else {
+      color = this.props.color || Color.givenHexString("#000");
+    }
+
+    this._color.setValue(color);
 
     this._actor = new LoadingIndicatorActor({
       parentElement: this._ref.current,
