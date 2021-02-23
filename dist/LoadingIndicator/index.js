@@ -12,10 +12,24 @@ class LoadingIndicator extends React.PureComponent {
         this._color = observable_1.Observable.ofEmpty(color_1.Color.isEqual);
     }
     componentDidUpdate() {
-        this._color.setValue(this.props.color);
+        let color;
+        if (typeof this.props.color === "string") {
+            color = color_1.Color.givenHexString(this.props.color);
+        }
+        else {
+            color = this.props.color || color_1.Color.givenHexString("#000");
+        }
+        this._color.setValue(color);
     }
     componentDidMount() {
-        this._color.setValue(this.props.color);
+        let color;
+        if (typeof this.props.color === "string") {
+            color = color_1.Color.givenHexString(this.props.color);
+        }
+        else {
+            color = this.props.color || color_1.Color.givenHexString("#000");
+        }
+        this._color.setValue(color);
         this._actor = new koji_frontend_tools_1.LoadingIndicator({
             parentElement: this._ref.current,
             color: this._color,
