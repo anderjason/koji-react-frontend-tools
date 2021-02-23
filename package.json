@@ -1,6 +1,6 @@
 {
   "name": "@anderjason/koji-react-frontend-tools",
-  "version": "4.0.1",
+  "version": "4.0.2",
   "description": "",
   "main": "./dist/index.js",
   "repository": {
@@ -29,7 +29,6 @@
     "@anderjason/time": "^2.0.2",
     "@anderjason/util": "^2.0.3",
     "@anderjason/web": "^7.2.3",
-    "@withkoji/vcc": "^1.1.47",
     "skytree": "^9.3.1"
   },
   "devDependencies": {
