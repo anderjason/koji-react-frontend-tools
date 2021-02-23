@@ -8,7 +8,6 @@ import { IntegerInputDemo } from "./IntegerInputDemo";
 import { MoneyInputDemo } from "./MoneyInputDemo";
 import { LoadingIndicatorDemo } from "./LoadingIndicatorDemo";
 import { DisplayTextDemo } from "./DisplayTextDemo";
-import { EditableTextDemo } from "./EditableTextDemo";
 import { FloatLabelTextareaDemo } from "./FloatLabelTextareaDemo";
 import { PublishButtonDemo } from "./PublishButtonDemo";
 import { CardPagesDemo } from "./CardPagesDemo";
@@ -46,12 +45,6 @@ const definitions = ObservableArray.givenValues<ExampleDefinition>([
     title: "Display text",
     actor: new ReactDemoContainer({
       component: DisplayTextDemo,
-    }),
-  },
-  {
-    title: "Editable text",
-    actor: new ReactDemoContainer({
-      component: EditableTextDemo,
     }),
   },
   {

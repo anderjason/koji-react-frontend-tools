@@ -4,6 +4,16 @@
 
 `npm install --save @anderjason/koji-react-frontend-tools`
 
+## Breaking changes from v3 to v4
+
+### Updated package references
+
+* See breaking change notes in `@anderjason/koji-frontend-tools` package
+
+### Removed EditableText
+
+### Removed ThemeToolbar
+
 ## Breaking changes from v2 to v3
 
 ### Updated package references

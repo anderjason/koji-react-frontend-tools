@@ -46,6 +46,7 @@ class Demo extends React.Component {
           renderContent={() => (
             <IntegerInput
               placeholderLabel="Quantity"
+              persistentLabel="Set quantity"
               defaultValue={this.state.qty}
               onChange={(qty) => this.setState({ qty })}
             />
