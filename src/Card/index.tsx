@@ -145,10 +145,9 @@ export class Card extends React.Component<CardProps, any> {
       this._actor.hiddenElement
     );
 
-
     this._layoutDatas.forEach((layoutData, idx) => {
       const additionalPage = requestedPages[idx];
-
+      
       layoutData.title.setValue(additionalPage.title);
       layoutData.anchorBottom.setValue(additionalPage.anchorBottom || false);
 
@@ -170,6 +169,8 @@ export class Card extends React.Component<CardProps, any> {
       } else {
         pageFooterContent = null;
       }
+
+      console.log("footer", layoutData.layout.footerElement);
 
       ReactDOM.render(
         <React.Fragment>{pageFooterContent}</React.Fragment>,

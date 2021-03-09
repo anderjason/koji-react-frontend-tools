@@ -15,6 +15,7 @@ import { CardFooterDemo } from "./CardFooterDemo";
 import { CardHiddenDemo } from "./CardHiddenDemo";
 import { ToggleButtonDemo } from "./ToggleButtonDemo";
 import { OptionsListDemo } from "./OptionsListDemo";
+import { VerticalExpanderDemo } from "./VerticalExpanderDemo";
 
 const definitions = ObservableArray.givenValues<ExampleDefinition>([
   {
@@ -99,6 +100,12 @@ const definitions = ObservableArray.givenValues<ExampleDefinition>([
     title: "Toggle button",
     actor: new ReactDemoContainer({
       component: ToggleButtonDemo,
+    }),
+  },
+  {
+    title: "Vertical expander",
+    actor: new ReactDemoContainer({
+      component: VerticalExpanderDemo,
     }),
   }
 ]);

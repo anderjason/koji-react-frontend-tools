@@ -11,6 +11,7 @@ import { PublishButton } from "./PublishButton";
 import { ReactBridge } from "./ReactBridge";
 import { SubmitButton } from "./SubmitButton";
 import { ToggleButton } from "./ToggleButton";
+import { VerticalExpander } from "./VerticalExpander";
 
 export {
   AlignBottom,
@@ -25,5 +26,6 @@ export {
   PublishButton,
   ReactBridge,
   SubmitButton,
-  ToggleButton
+  ToggleButton,
+  VerticalExpander
 };

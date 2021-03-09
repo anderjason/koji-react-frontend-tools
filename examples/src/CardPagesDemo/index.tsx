@@ -22,7 +22,7 @@ export class CardPagesDemo extends React.Component<
   componentDidMount() {
     this._timer = new Timer({
       duration: Duration.givenSeconds(3),
-      isRepeating: true,
+      isRepeating: false,
       fn: () => {
         if (this.state.additionalPages.length === 0) {
           this.setState({

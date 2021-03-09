@@ -11,7 +11,7 @@ export class ToggleButtonDemo extends React.Component<
   ToggleButtonDemoState
 > {
   state = {
-    isToggleActive: false
+    isToggleActive: false,
   } as ToggleButtonDemoState;
 
   render() {
@@ -50,10 +50,13 @@ class Demo extends React.Component {
       <AlignBottom isRemixing={false}>
         <Card
           renderContent={() => (
-            <ToggleButton
-              defaultValue={isToggleActive}
-              onChange={(value) => this.setState({ isToggleActive: value })}
-            />
+            <>
+              <ToggleButton
+                defaultValue={isToggleActive}
+                onChange={(value) => this.setState({ isToggleActive: value })}
+              />
+              <div>{isToggleActive ? "ON" : "OFF"}</div>
+            </>
           )}
         />
       </AlignBottom>

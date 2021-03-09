@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ToggleButton = exports.SubmitButton = exports.ReactBridge = exports.PublishButton = exports.OptionsList = exports.MoneyInput = exports.LoadingIndicator = exports.IntegerInput = exports.FloatLabelTextInput = exports.FloatLabelTextarea = exports.DisplayText = exports.Card = exports.AlignBottom = void 0;
+exports.VerticalExpander = exports.ToggleButton = exports.SubmitButton = exports.ReactBridge = exports.PublishButton = exports.OptionsList = exports.MoneyInput = exports.LoadingIndicator = exports.IntegerInput = exports.FloatLabelTextInput = exports.FloatLabelTextarea = exports.DisplayText = exports.Card = exports.AlignBottom = void 0;
 const AlignBottom_1 = require("./AlignBottom");
 Object.defineProperty(exports, "AlignBottom", { enumerable: true, get: function () { return AlignBottom_1.AlignBottom; } });
 const Card_1 = require("./Card");
@@ -27,4 +27,6 @@ const SubmitButton_1 = require("./SubmitButton");
 Object.defineProperty(exports, "SubmitButton", { enumerable: true, get: function () { return SubmitButton_1.SubmitButton; } });
 const ToggleButton_1 = require("./ToggleButton");
 Object.defineProperty(exports, "ToggleButton", { enumerable: true, get: function () { return ToggleButton_1.ToggleButton; } });
+const VerticalExpander_1 = require("./VerticalExpander");
+Object.defineProperty(exports, "VerticalExpander", { enumerable: true, get: function () { return VerticalExpander_1.VerticalExpander; } });
 //# sourceMappingURL=index.js.map

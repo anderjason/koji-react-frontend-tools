@@ -82,6 +82,7 @@ class Card extends React.Component {
                 else {
                     pageFooterContent = null;
                 }
+                console.log("footer", layoutData.layout.footerElement);
                 ReactDOM.render(React.createElement(React.Fragment, null, pageFooterContent), layoutData.layout.footerElement);
             });
         };

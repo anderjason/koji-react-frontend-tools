@@ -11,4 +11,5 @@ import { PublishButton } from "./PublishButton";
 import { ReactBridge } from "./ReactBridge";
 import { SubmitButton } from "./SubmitButton";
 import { ToggleButton } from "./ToggleButton";
-export { AlignBottom, Card, DisplayText, FloatLabelTextarea, FloatLabelTextInput, IntegerInput, LoadingIndicator, MoneyInput, OptionsList, PublishButton, ReactBridge, SubmitButton, ToggleButton };
+import { VerticalExpander } from "./VerticalExpander";
+export { AlignBottom, Card, DisplayText, FloatLabelTextarea, FloatLabelTextInput, IntegerInput, LoadingIndicator, MoneyInput, OptionsList, PublishButton, ReactBridge, SubmitButton, ToggleButton, VerticalExpander };

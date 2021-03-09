@@ -26,7 +26,7 @@ export class ToggleButton extends React.PureComponent<ToggleButtonProps, any> {
     this._actor.activate();
 
     this._actor.cancelOnDeactivate(
-      this._actor.isActive.didChange.subscribe(isToggleActive => {
+      this._isToggleActive.didChange.subscribe(isToggleActive => {
         this.props.onChange(isToggleActive);
       })
     );
